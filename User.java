@@ -57,35 +57,6 @@ public class User {
                    ", Περιγραφή Περιστατικού=" + incidentDescription + ", Διεύθυνση=" + address +
                    ", Δήμος=" + municipality + "]";
         }
-
-        public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Εισάγετε το ονοματεπώνυμο: ");
-        String fullName = scanner.nextLine();
-
-        System.out.print("Εισάγετε την ηλικία: ");
-        int age = scanner.nextInt();
-        scanner.nextLine(); 
-
-        System.out.print("Εισάγετε το είδος περιστατικού (π.χ., καρδιολογικό, παθολογικό): ");
-        String incidentType = scanner.nextLine();
-
-        System.out.print("Περιγράψτε το περιστατικό: ");
-        String incidentDescription = scanner.nextLine();
-
-        System.out.print("Εισάγετε τη διεύθυνση: ");
-        String address = scanner.nextLine();
-
-        System.out.print("Εισάγετε το δήμο: ");
-        String municipality = scanner.nextLine();
-
-        User user = new User(fullName, age, incidentType, incidentDescription, address, municipality);
-
-        System.out.println("\nΣτοιχεία Χρήστη:");
-        System.out.println(user);
-        scanner.close();
-    }
 }
     
 
