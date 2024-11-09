@@ -1,46 +1,63 @@
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class User {
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int userId;
-        int age = 0;
-        int caseType = 0;
-        // Δηλαδή αν είναι οφθαλμολογικού, ορθοπεδικού κτλ
-        String caseDescription = "";
-        String accidentAddress = " ";
-        String accidentDistrict = " ";
-        try {
-            System.out.print("Παρακαλώ εισάγετε ηλικία θύματος: ");
-            age = sc.nextInt();
-            while (age <= 0) {
-                System.out.print("Η ηλικία πρέπει να είναι ένας θετικός αριθμός. Παρακαλώ προσπαθήστε ξανά: ");
-                age = sc.nextInt();
-            }
-            while (caseType < 1 || caseType > 20) {
-                System.out.print("Παρακαλώ επιλέξτε είδος περιστατικού (1-20): ");
-                caseType = sc.nextInt();
-            }
-            System.out.print("Παρακαλώ εισάγετε σύντομη περιγραφή του ατυχήματος: ");
-           while ((caseDescription.isEmpty())) {
-            caseDescription = sc.nextLine();
-           }
-            System.out.print("Παρακαλώ εισάγετε τη διεύθυνση του ατυχήματος: ");
-            accidentAddress = sc.nextLine();
-            System.out.println("\nΗ εισαγωγή ολοκληρώθηκε με επιτυχία! ");
-            System.out.println("Ηλικία θύματος: " + age);
-            System.out.println("Είδος περιστατικού: " + caseType);
-            System.out.println("Περιγραφή: " + caseDescription);
-            System.out.println("Διεύθυνση ατυχήματος: " + accidentAddress);
-        } catch (InputMismatchException e) {
-            System.out.print("Παρακαλώ εισάγετε έγκυρη ηλικία θύματος: ");
-        } catch (Exception e) {
-            System.out.print("Προέκυψε ενα σφάλμα. Παρακαλώ προσπαθήστε ξανά! ");
-        } finally {
-            sc.close();
+        private String fullName;
+        private int age;
+        private String incidentType;
+        private String incidentDescription;
+        private String address;
+        private String municipality;
+    
+        public User(String fullName, int age, String incidentType, String incidentDescription, String address, String municipality) {
+            this.fullName = fullName;
+            this.age = age;
+            this.incidentType = incidentType;
+            this.incidentDescription = incidentDescription;
+            this.address = address;
+            this.municipality = municipality;
         }
-    }
+        public String getFullName() {
+            return fullName;
+        }
+        public int getAge() {
+            return age;
+        }
+        public String getIncidentType() {
+            return incidentType;
+        }
+        public String getIncidentDescription() {
+            return incidentDescription;
+        }
+        public String getAddress() {
+            return address;
+        }
+        public String getMunicipality() {
+            return municipality;
+        }
+        public void setFullName(String fullName) {
+            this.fullName = fullName;
+        }
+        public void setAge(int age) {
+            this.age = age;
+        }
+        public void setIncidentType(String incidentType) {
+            this.incidentType = incidentType;
+        }
+        public void setIncidentDescription(String incidentDescription) {
+            this.incidentDescription = incidentDescription;
+        }
+        public void setAddress(String address) {
+            this.address = address;
+        }
+        public void setMunicipality(String municipality) {
+            this.municipality = municipality;
+        }
+        @Override
+        public String toString() {
+            return "User [Όνοματεπώνυμο=" + fullName + ", Ηλικία=" + age + ", Είδος Περιστατικού=" + incidentType +
+                   ", Περιγραφή Περιστατικού=" + incidentDescription + ", Διεύθυνση=" + address +
+                   ", Δήμος=" + municipality + "]";
+        }
 }
+    
+
+
