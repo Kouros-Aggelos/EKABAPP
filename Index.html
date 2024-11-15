@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Οδηγίες Πλοήγησης με Νοσοκομεία</title>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        #panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+            z-index: 5;
+        }
+        #details {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="panel">
+        <input type="text" id="startAddress" placeholder="Εισάγετε Διεύθυνση Εκκίνησης">
+        <select id="end">
+            <option value="">Επιλέξτε Προορισμό</option>
+        </select>
+        <button onclick="calculateRoute()">Υπολογισμός Διαδρομής</button>
+        <div id="details"></div>
+    </div>
+    <div id="map"></div>
+
+    <script>
+        let map, directionsService, directionsRenderer, geocoder;
+
+        const hospitals = [
+            { name: "Γ.Ν.Ν. ΙΩΝΙΑΣ ΚΩΝ/ΠΟΥΛΕΙΟ", position: { lat: 38.037855, lng: 23.757404 } },
+            { name: "Γ.Ν.Α. Γ. ΓΕΝΝΗΜΑΤΑΣ", position: { lat: 37.997103, lng: 23.782691 } },
+            { name: "Γ.Ν.Α. ΑΛΕΞΑΝΔΡΑ", position: { lat: 37.980364, lng: 23.754923 } },
+            { name: "Γ.Ν.Α. ΣΩΤΗΡΙΑ", position: { lat: 37.99513, lng: 23.779473 } },
+            { name: "Γ.Ν.Π. ΤΖΑΝΕΙΟ", position: { lat: 37.934308, lng: 23.645556 } },
+            { name: "Π.Γ.Ν. ΑΤΤΙΚΟΝ", position: { lat: 38.015696, lng: 23.664896 } },
+            { name: "Γ.Ν.Α. ΣΙΣΜΑΝΟΓΛΕΙΟ", position: { lat: 38.046252, lng: 23.828265 } },
+            { name: "Γ.Ν.Α. ΕΥΑΓΓΕΛΙΣΜΟΣ", position: { lat: 37.979651, lng: 23.748398 } },
+            { name: "Γ.Ν.Α. ΚΑΤ", position: { lat: 38.065904, lng: 23.808372 } },
+            { name: "Γ.Ν. ΑΣΚΛΗΠΙΕΙΟ ΒΟΥΛΑΣ", position: { lat: 37.848267, lng: 23.754814 } },
+            { name: "Γ.Ν.Α. ΛΑΪΚΟ", position: { lat: 37.983328, lng: 23.765302 } },
+            { name: "Γ.Ο.Ν.Κ. ΑΓ. ΑΝΑΡΓΥΡΟΙ", position: { lat: 38.031712, lng: 23.724389 } },
+            { name: "Α.Ο.Ν.Α. ΑΓ. ΣΑΒΒΑΣ", position: { lat: 37.987998, lng: 23.755588 } },
+            { name: "Ν.Δ.Ν.Α. Α. ΣΥΓΓΡΟΣ", position: { lat: 37.974017, lng: 23.751793 } },
+            { name: "Γ.Ν.Μ. ΕΛ. ΒΕΝΙΖΕΛΟΥ", position: { lat: 37.985037, lng: 23.755253 } },
+            { name: "Π.Γ.Ν.Α. ΑΡΕΤΑΙΕΙΟ", position: { lat: 37.979765, lng: 23.75432 } },
+            { name: "Γ.Ν. Π.Α. ΑΓΛ. ΚΥΡΙΑΚΟΥ", position: { lat: 37.985223, lng: 23.767847 } },
+            { name: "Γ.Ν. ΠΑΙΔΩΝ ΠΕΝΤΕΛΗΣ", position: { lat: 38.050922, lng: 23.875144 } },
+            { name: "Ν.Α. ΟΦΘΑΛΜΙΑΤΡΕΙΟ ΑΘΗΝΩΝ", position: { lat: 37.979312, lng: 23.734251 } },
+            { name: "Ψ.Ν.Α. ΔΑΦΝΙ", position: { lat: 38.014465, lng: 23.635031 } },
+            { name: "Ψ.Ν.Α. ΔΡΟΜΟΚΑΪΤΕΙΟ", position: { lat: 38.000501, lng: 23.662603 } },
+            { name: "Ν.Π. ΑΙΓΙΝΗΤΕΙΟ", position: { lat: 37.979295, lng: 23.753718 } },
+            { name: "Ε.Α.Ν.Π. ΜΕΤΑΞΑ", position: { lat: 37.92975, lng: 23.643514 } },
+            { name: "ΙΠΠΟΚΡΑΤΕΙΟ", position: { lat: 37.98364, lng: 23.75975 } },
+            { name: "ΕΛΠΙΣ", position: { lat: 37.989794, lng: 23.75536 } },
+            { name: "ΑΓ. ΠΑΝΤΕΛΕΗΜΟΝΑΣ", position: { lat: 37.998992, lng: 23.727393 } },
+            { name: "ΠΑΜΜΑΚΑΡΙΣΤΟΣ", position: { lat: 38.01442, lng: 23.731607 } },
+            { name: "ΑΓ. ΣΟΦΙΑ", position: { lat: 37.984785, lng: 23.768901 } }
+        ];
+
+        function initMap() {
+            // Δημιουργία του χάρτη
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 37.9838, lng: 23.7275 },
+                zoom: 10,
+            });
+
+            // Ρύθμιση των υπηρεσιών
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+            geocoder = new google.maps.Geocoder();
+
+            // Προσθήκη νοσοκομείων στη λίστα επιλογής
+            const endSelect = document.getElementById("end");
+            hospitals.forEach(hospital => {
+                const optionEnd = new Option(hospital.name, JSON.stringify(hospital.position));
+                endSelect.add(optionEnd);
+            });
+        }
+
+        async function geocodeAddress(address) {
+            return new Promise((resolve, reject) => {
+                geocoder.geocode({ address: address }, (results, status) => {
+                    if (status === "OK") {
+                        resolve(results[0].geometry.location);
+                    } else {
+                        reject("Δεν βρέθηκε διεύθυνση.");
+                    }
+                });
+            });
+        }
+
+        async function calculateRoute() {
+            const startAddress = document.getElementById("startAddress").value;
+            const end = JSON.parse(document.getElementById("end").value);
+
+            try {
+                const start = await geocodeAddress(startAddress);
+
+                const request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    drivingOptions: {
+                        departureTime: new Date(),
+                        trafficModel: 'pessimistic'
+                    }
+                };
+
+                directionsService.route(request, (response, status) => {
+                    if (status === "OK") {
+                        directionsRenderer.setDirections(response);
+                        const route = response.routes[0].legs[0];
+                        const distance = route.distance.text;
+                        const duration = route.duration_in_traffic ? route.duration_in_traffic.text : route.duration.text;
+                        document.getElementById("details").innerHTML = `
+                            <p>Απόσταση: ${distance}</p>
+                            <p>Χρόνος Διαδρομής: ${duration}</p>
+                        `;
+                    } else {
+                        alert("Δεν βρέθηκε διαδρομή.");
+                    }
+                });
+            } catch (error) {
+                alert(error);
+            }
+        }
+    </script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5L0dTX88It7Qz8JZlQw72MKcF-i0uIJo&callback=initMap" defer></script>
+</body>
+</html>
+
+
