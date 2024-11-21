@@ -6,5 +6,5 @@ public class Closest extends Hospital {
             nearestHospital = hospital;
         }
     }
-    System.out.println("Το κοντινότερο νοσοκομείο είναι το nearestHospital.name");
+    System.out.println("Το κοντινότερο νοσοκομείο είναι το" nearestHospital.name);
 }
