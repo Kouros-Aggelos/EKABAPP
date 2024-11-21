@@ -1,7 +1,10 @@
-for (Hospital hospital : hospitals) {
-            double distance = Hospital(currentLat, currentLon, hospital.latitude, hospital.longitude);
-            if (distance < shortestDistance) {
-                shortestDistance = distance;
-                nearestHospital = hospital;
-            }
+public class Closest extends Hospital {
+    for (Hospital hospital : hospitals) {
+        double distance = Hospital(currentLat, currentLon, hospital.latitude, hospital.longitude);
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            nearestHospital = hospital;
         }
+    }
+    System.out.println("Το κοντινότερο νοσοκομείο είναι το nearestHospital.name");
+}
