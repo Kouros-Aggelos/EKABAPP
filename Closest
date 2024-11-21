@@ -1,1 +1,7 @@
-
+for (Hospital hospital : hospitals) {
+            double distance = Hospital(currentLat, currentLon, hospital.latitude, hospital.longitude);
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestHospital = hospital;
+            }
+        }
