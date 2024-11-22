@@ -6,14 +6,16 @@ public class User {
         private String incidentDescription;
         private String address;
         private String municipality;
+
+        Scanner scanner = new Scanner(System.in);
     
-        public User(String fullName, int age, String incidentType, String incidentDescription, String address, String municipality) {
-            this.fullName = fullName;
-            this.age = age;
-            this.incidentType = incidentType;
-            this.incidentDescription = incidentDescription;
-            this.address = address;
-            this.municipality = municipality;
+        public User() {
+            this.fullName = setFullName();
+            this.age = setAge();
+            this.incidentType = setIncidentType();
+            this.incidentDescription = setIncidentDescription();
+            this.address = setAddress();
+            this.municipality = setMunicipality();
         }
         public String getFullName() {
             return fullName;
@@ -33,23 +35,31 @@ public class User {
         public String getMunicipality() {
             return municipality;
         }
-        public void setFullName(String fullName) {
-            this.fullName = fullName;
+
+        public void setFullName() {
+            System.out.println("Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή");
+            this.fullName = scanner.nextLine();
         }
-        public void setAge(int age) {
-            this.age = age;
+        //Possibility of error in data input from the user.
+        //TODO(Vicky):add exception 
+        public void setAge() {
+            System.out.println("Παρακαλώ εισάγετε την ηλικία του ασθενή");
+            this.age = scanner.nextInt();
         }
-        public void setIncidentType(String incidentType) {
-            this.incidentType = incidentType;
+        public void setIncidentType() {
+            System.out.println("Είδος συμβάντος:");
+            this.incidentType = scanner.nextLine();
         }
         public void setIncidentDescription(String incidentDescription) {
             this.incidentDescription = incidentDescription;
         }
-        public void setAddress(String address) {
-            this.address = address;
+        public void setAddress() {
+            System.out.println("Εισάγετε την διεύθυνση του περιστατικού");
+            this.address = scanner.nextLine();
         }
-        public void setMunicipality(String municipality) {
-            this.municipality = municipality;
+        public void setMunicipality() {
+            System.out.println("Δήμος περιστατικού:");
+            this.municipality = scanner.nextLine();
         }
         @Override
         public String toString() {
