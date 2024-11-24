@@ -1,6 +1,6 @@
 public class Closest extends Hospital {
     for (Hospital hospital : hospitals) {
-        double distance = Hospital(currentLat, currentLon, hospital.latitude, hospital.longitude);
+        double distance = calculateDistance(Hospital.currentLat, Hospital.currentLon, Hospital.latitude, Hospital.longitude);
         if (distance < shortestDistance) {
             shortestDistance = distance;
             nearestHospital = hospital;
