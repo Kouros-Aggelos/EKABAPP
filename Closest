@@ -1,6 +1,6 @@
 public class Closest extends Hospital {
-    double currentLat;
-    double currentLon;
+    public double currentLat;
+    public double currentLon;
     double shortestDistance;
     Hospital nearestHospital;
     public Closest (double latitude, double longitude, double currentLat, double currentLon) {
