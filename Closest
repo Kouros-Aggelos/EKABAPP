@@ -1,6 +1,15 @@
 public class Closest extends Hospital {
+    double currentLat;
+    double currentLon;
+    double shortestDistance;
+    Hospital nearestHospital;
+    public Closest (double latitude, double longitude, double currentLat, double currentLon) {
+        super (latitude, longitude);
+        this.currentLat = currentLat;
+        this.currentLon = currentLon;
+    }
     for (Hospital hospital : hospitals) {
-        double distance = calculateDistance(Hospital.currentLat, Hospital.currentLon, Hospital.latitude, Hospital.longitude);
+        double distance = calculateDistance(currentLat, currentLon, latitude, longitude);
         if (distance < shortestDistance) {
             shortestDistance = distance;
             nearestHospital = hospital;
