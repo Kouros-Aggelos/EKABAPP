@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Suitable extends Hospital {
+public class Suitable extends Closest {
     public static void main(String[] args) {
         String[][] departments = {
             {"1", "Παθολογική"},
