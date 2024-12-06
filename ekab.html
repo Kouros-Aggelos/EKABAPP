@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps - Νοσοκομεία στην Αθήνα</title>
+    <link rel="stylesheet" href="ekab.css">
+    <style>
+        /* Ρύθμισε το ύψος του χάρτη */
+        #map {
+            height: 100vh; /* Ύψος του χάρτη */
+            width: 100%; /* Πλάτος του χάρτη */
+        }
+    </style>
+</head>
+<body>
+    <h3>Νοσοκομεία στην Αθήνα</h3>
+    <!-- Div που θα περιέχει το χάρτη -->
+    <div id="map"></div>
+
+    <!-- Σύνδεση με το Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Iw-hGUXCyLNd4ac-99MVWODhfb-hUhw&libraries=marker&callback=initMap" async defer></script>
+
+    <!-- Σύνδεση με το δικό σου αρχείο JavaScript -->
+    <script src="ekab.js"></script>
+</body>
+</html>
