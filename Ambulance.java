@@ -10,7 +10,7 @@ public class Ambulance {
     public Ambulance(int ambId) {
         this.ambId = ambId;
         this.status = "available";
-        this.latitude = latitude;
+        this.latitude = latitude; 
         this.longitude = longitude;
     }
     //Διαθεσιμότητα
