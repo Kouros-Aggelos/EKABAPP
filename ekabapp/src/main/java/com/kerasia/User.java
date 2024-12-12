@@ -26,7 +26,6 @@ public class User {
         }
        
         public void getUserInput() {
-
         
             System.out.println("Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή");
             fullName = scanner.nextLine();
@@ -107,6 +106,3 @@ public class User {
             System.out.println(u1);
         }
 }
-    
-
-
