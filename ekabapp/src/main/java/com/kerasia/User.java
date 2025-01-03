@@ -1,4 +1,6 @@
 package com.kerasia;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.Locale;
@@ -18,8 +20,12 @@ public class User {
         private String dayOfWeek;
         private String time;
 
-        Scanner scanner = new Scanner(System.in);
-    
+        //String charset = "windows-1253";
+        Scanner scanner = new Scanner(System.in, "ISO-8859-7");
+
+        //Scanner scanner = new Scanner(new InputStreamReader(System.in, Charset.forName("ISO-8859-7")));
+
+
         public User() {
             getUserInput();
             saveDayAndTime();
@@ -104,5 +110,6 @@ public class User {
         public static void main(String[] args) {
             User u1 = new User();
             System.out.println(u1);
+            System.out.println(u1.getFullName());
         }
 }
