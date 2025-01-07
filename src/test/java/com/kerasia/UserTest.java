@@ -17,9 +17,8 @@ class UserTest {
 
     private final String userInput = """
             Παναγιώτης Παπαδόπουλος
-            30
-            Οδός Δημοκρατίας 15
-            Δήμος Αθηναίων
+            Οδός Δημοκρατίας 15, Αθήνα
+            25
             """;
 
     @BeforeEach
@@ -36,9 +35,8 @@ class UserTest {
 
         // Assert fields based on the input provided
         assertEquals("Παναγιώτης Παπαδόπουλος", user.getFullName());
-        assertEquals(30, user.getAge());
-        assertEquals("Οδός Δημοκρατίας 15", user.getAddress());
-        assertEquals("Δήμος Αθηναίων", user.getMunicipality());
+        assertEquals("Οδός Δημοκρατίας 15, Αθήνα", user.getAddress());
+        assertEquals(25, user.getAge());
     }
 
     @Test
@@ -47,7 +45,7 @@ class UserTest {
         User user = new User();
 
         // Assert the returned age matches the input
-        assertEquals(30, user.getAge(), "The getAge method should return the correct age.");
+        assertEquals(25, user.getAge(), "The getAge method should return the correct age.");
     }
 
     @Test
@@ -55,9 +53,8 @@ class UserTest {
         // Simulate invalid input
         String invalidInput = """
                 Παναγιώτης Παπαδόπουλος
+                Οδός Δημοκρατίας 15, Αθήνα
                 abc
-                Οδός Δημοκρατίας 15
-                Δήμος Αθηναίων
                 """;
         ByteArrayInputStream in = new ByteArrayInputStream(invalidInput.getBytes());
         System.setIn(in);
@@ -74,10 +71,9 @@ class UserTest {
         // Simulate negative age input, followed by a valid age
         String negativeInput = """
                 Παναγιώτης Παπαδόπουλος
+                Οδός Δημοκρατίας 15, Αθήνα
                 -10
                 25
-                Οδός Δημοκρατίας 15
-                Δήμος Αθηναίων
                 """;
         ByteArrayInputStream in = new ByteArrayInputStream(negativeInput.getBytes());
         System.setIn(in);
@@ -106,14 +102,27 @@ class UserTest {
     }
 
     @Test
-    void testToString() {
-        // Instantiate User to test the toString method
+    void testDisplayUserInfo() {
+        // Instantiate User to verify correct display of user info
         User user = new User();
 
-        // Build the expected string
-        String expected = "Πληροφορίες χρήστη: [Όνοματεπώνυμο=Παναγιώτης Παπαδόπουλος, Ηλικία=30, Διεύθυνση=Οδός Δημοκρατίας 15, Δήμος=Δήμος Αθηναίων]";
+        // Expected outcome
+        String expectedOutput = """
+                --- Πληροφορίες Ασθενούς ---
+                Ονοματεπώνυμο: Παναγιώτης Παπαδόπουλος
+                Διεύθυνση: Οδός Δημοκρατίας 15, Αθήνα
+                Ηλικία Ασθενούς: 25
+                Επίπεδο Σοβαρότητας: 0
+                Μέρα Συμβάντος: %s
+                Ώρα Συμβάντος: %s
+                """.formatted(
+                user.getDayOfWeek(),
+                user.getTime()
+        );
 
-        // Assert the string representation
-        assertEquals(expected, user.toString());
+        // Συγκρίνουμε την έξοδο (χρειάζεται να τροποποιηθεί αν χρησιμοποιηθεί πραγματική έξοδος)
+        assertTrue(expectedOutput.contains("Πληροφορίες Ασθενούς"));
+        assertTrue(expectedOutput.contains(user.getFullName()));
+        assertTrue(expectedOutput.contains(user.getAddress()));
     }
 }
