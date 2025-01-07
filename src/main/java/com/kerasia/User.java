@@ -20,10 +20,9 @@ public class User {
         private String dayOfWeek;
         private String time;
 
-        //String charset = "windows-1253";
-        Scanner scanner = new Scanner(System.in, "ISO-8859-7");
+        //Scanner scanner = new Scanner(System.in, "UTF-8");
 
-        //Scanner scanner = new Scanner(new InputStreamReader(System.in, Charset.forName("ISO-8859-7")));
+        Scanner scanner = new Scanner(new InputStreamReader(System.in, Charset.forName("UTF-8")));
 
 
         public User() {
@@ -108,8 +107,10 @@ public class User {
         }
 
         public static void main(String[] args) {
+            System.setProperty("file.encoding", "UTF-8");
             User u1 = new User();
             System.out.println(u1);
+            System.out.println(new String(u1.toString().getBytes(Charset.forName("UTF-8")), Charset.forName("UTF-8")));
             System.out.println(u1.getFullName());
         }
 }
