@@ -1,116 +1,134 @@
 package com.kerasia;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
+
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
-import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class User {
 
-        //TODO(Vicky): Add severity level when ESI class available
-        //Maybe the fields should be final?
+    // Ιδιότητες που θα αποθηκεύουν τα δεδομένα του χρήστη
+    private String fullName;
+    private String address;
+    private int age;
+    private int severityLevel;
+    private String dayOfWeek; // Αποθηκεύει τη μέρα της εβδομάδας
+    private String time; // Αποθηκεύει την ώρα
 
-        private String fullName;
-        private int age;
-        private String address;
-        private String municipality;
-        private String dayOfWeek;
-        private String time;
-
-        //Scanner scanner = new Scanner(System.in, "UTF-8");
-
-        Scanner scanner = new Scanner(new InputStreamReader(System.in, Charset.forName("UTF-8")));
+    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
 
 
-        public User() {
-            getUserInput();
-            saveDayAndTime();
-        }
-       
-        public void getUserInput() {
-        
-            System.out.println("Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή");
+    public User() {
+        getUserInput();
+    }
+
+    
+    public void getUserInput() {
+        try {
+            
+            System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
+            System.out.print("Εισάγετε όνομα και επώνυμο: ");
             fullName = scanner.nextLine();
+
+            System.out.print("Εισάγετε διεύθυνση και περιοχή: ");
+            address = scanner.nextLine();
+
+            /*
+            System.out.print("Εισάγετε επίπεδο σοβαρότητας (1-5): ");
+            severityLevel = scanner.nextInt();
+            if (severityLevel < 1 || severityLevel > 5) {
+                System.out.println("Μη έγκυρο επίπεδο! Προεπιλέγεται το επίπεδο 1.");
+                severityLevel = 1;
+            }
+
+            */
 
             age = setAge();
 
-            System.out.println("Εισάγετε την διεύθυνση του περιστατικού");
-            address = scanner.nextLine();
+            saveDayAndTime();
 
-            System.out.println("Δήμος περιστατικού:");
-            municipality = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Σφάλμα κατά την είσοδο δεδομένων: " + e.getMessage());
         }
-       
-        //Possibility of error in data input from the user.
-        public int setAge() throws InputMismatchException {
+    }
+
+    public int setAge() throws InputMismatchException {
             
-            int a = -1;
-            boolean validInput = false; 
-            do {   
-                try {
-                        System.out.println("Παρακαλώ εισάγετε την ηλικία του ασθενή");
-                        a = scanner.nextInt();
-                        scanner.nextLine();
-                        if (a <= 0) {
-                            System.out.println("Η ηλικία πρέπει να είναι θετικός αριθμός. Παρακαλώ δοκιμάστε ξανά.");
-                        } else {
-                            validInput = true;
-                        }
-                    } 
-                catch (InputMismatchException e) {
-                    System.err.println("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.");
-                    scanner.nextLine(); 
+        int a = -1;
+        boolean validInput = false; 
+        do {   
+            try {
+                    System.out.println("Παρακαλώ εισάγετε την ηλικία του ασθενή");
+                    a = scanner.nextInt();
+                    scanner.nextLine();
+                    if (a <= 0) {
+                        System.out.println("Η ηλικία πρέπει να είναι θετικός αριθμός. Παρακαλώ δοκιμάστε ξανά.");
+                    } else {
+                        validInput = true;
+                    }
                 } 
-            } while (!validInput);
-            return a;
-        } 
+            catch (InputMismatchException e) {
+                System.err.println("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.");
+                scanner.nextLine(); 
+            } 
+        } while (!validInput);
+        return a;
+    }
 
-
-        public void saveDayAndTime(){
-            LocalDateTime currentDateTime = LocalDateTime.now();
+    // Μέθοδος που αποθηκεύει τη μέρα της εβδομάδας και την ώρα
+    public void saveDayAndTime() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
         // Αποθηκεύουμε τη μέρα της εβδομάδας στα ελληνικά
-        dayOfWeek = currentDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("el"));
+        dayOfWeek = currentDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("el"));
         // Αποθηκεύουμε την ώρα με τη μορφή HH:mm
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         time = currentDateTime.format(timeFormatter);
+    }
 
-        }
+    // Μέθοδος για εμφάνιση των δεδομένων του χρήστη
+    public void displayUserInfo() {
+        System.out.println("\n--- Πληροφορίες Ασθενούς ---");
+        System.out.println("Ονοματεπώνυμο: " + fullName);
+        System.out.println("Διεύθυνση: " + address);
+        System.out.println("Ηλικία Ασθενούς: " + age);
+        System.out.println("Επίπεδο Σοβαρότητας: " + severityLevel);
+        System.out.println("Μέρα Συμβάντος: " + dayOfWeek);
+        System.out.println("Ώρα Συμβάντος: " + time);
+    }
 
+    
+    public String getFullName() {
+        return fullName;
+    }
 
-        public String getFullName() {
-            return fullName;
-        }
-        public int getAge() {
-            return age;
-        }
-        public String getAddress() {
-            return address;
-        }
-        public String getMunicipality() {
-            return municipality;
-        }
-        public String getDayOfWeek() {
-            return dayOfWeek;
-        }
-        public String getTime() {
-            return time;
-        }
+    public String getAddress() {
+        return address;
+    }
 
+    public int getAge() {
+        return age;
+    }
 
-        @Override
-        public String toString() {
-            return "Πληροφορίες χρήστη: [Όνοματεπώνυμο=" + fullName + ", Ηλικία=" + age + ", Διεύθυνση=" + address +
-                   ", Δήμος=" + municipality + "]";
-        }
+    public int getSeverityLevel() {
+        return severityLevel;
+    }
 
-        public static void main(String[] args) {
-            System.setProperty("file.encoding", "UTF-8");
-            User u1 = new User();
-            System.out.println(u1);
-            System.out.println(new String(u1.toString().getBytes(Charset.forName("UTF-8")), Charset.forName("UTF-8")));
-            System.out.println(u1.getFullName());
-        }
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public String getTime() {
+        return time;
+    }
+    public static void main(String[] args) {
+        // Δημιουργούμε ένα νέο αντικείμενο User
+        User user = new User();
+
+        // Εμφανίζουμε τις πληροφορίες του χρήστη
+        user.displayUserInfo();
+    }
 }
