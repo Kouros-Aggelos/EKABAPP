@@ -74,6 +74,9 @@ public class User {
             catch (InputMismatchException e) {
                 System.err.println("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.");
                 scanner.nextLine(); 
+                if (System.getProperty("testing") != null) {
+                    throw e;
+                }
             } 
         } while (!validInput);
         return a;
