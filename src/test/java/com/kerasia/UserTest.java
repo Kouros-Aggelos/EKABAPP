@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.util.InputMismatchException;
 import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,6 +51,9 @@ class UserTest {
 
     @Test
     void testInputMismatchExceptionInGetAge() {
+
+        System.setProperty("testing", "true");
+
         // Simulate invalid input
         String invalidInput = """
                 Παναγιώτης Παπαδόπουλος
@@ -60,10 +64,10 @@ class UserTest {
         System.setIn(in);
 
         // Instantiate User and ensure InputMismatchException is handled in the flow
-        Exception exception = assertThrows(Exception.class, User::new);
+        InputMismatchException exception = assertThrows(InputMismatchException.class, User::new);
 
         // Verify the exception message if needed
-        assertTrue(exception.getMessage().contains("Messagepart here"));
+        assertTrue(exception.getMessage().contains("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο."));
     }
 
     @Test

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.kerasia.UserTest" time="0.154" tests="6" errors="1" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.kerasia.UserTest" time="0.147" tests="6" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1253"/>
-    <property name="java.class.path" value="C:\Users\User\EKABAPP\target\test-classes;C:\Users\User\EKABAPP\target\classes;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="java.class.path" value="C:\Users\User\EKABAPP\target\test-classes;C:\Users\User\EKABAPP\target\classes;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-spring-boot-starter\24.1.0\vaadin-spring-boot-starter-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-spring\24.1.0\vaadin-spring-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-server\24.1.0\flow-server-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\servletdetector\throw-if-servlet3\1.0.2\throw-if-servlet3-1.0.2.jar;C:\Users\User\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar;C:\Users\User\.m2\repository\com\vaadin\external\gwt\gwt-elemental\2.8.2.vaadin2\gwt-elemental-2.8.2.vaadin2.jar;C:\Users\User\.m2\repository\com\vaadin\flow-commons-upload\24.1.0\flow-commons-upload-24.1.0.jar;C:\Users\User\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\User\.m2\repository\org\jsoup\jsoup\1.16.1\jsoup-1.16.1.jar;C:\Users\User\.m2\repository\com\helger\ph-css\7.0.0\ph-css-7.0.0.jar;C:\Users\User\.m2\repository\com\helger\commons\ph-commons\11.0.1\ph-commons-11.0.1.jar;C:\Users\User\.m2\repository\org\ow2\asm\asm\9.5\asm-9.5.jar;C:\Users\User\.m2\repository\com\vaadin\external\gentyref\1.2.0.vaadin1\gentyref-1.2.0.vaadin1.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-compress\1.23.0\commons-compress-1.23.0.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\User\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\User\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\User\.m2\repository\com\vaadin\flow-push\24.1.0\flow-push-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\external\atmosphere\atmosphere-runtime\3.0.3.slf4jvaadin1\atmosphere-runtime-3.0.3.slf4jvaadin1.jar;C:\Users\User\.m2\repository\com\vaadin\flow-client\24.1.0\flow-client-24.1.0.jar;C:\Users\User\.m2\repository\org\springframework\spring-webmvc\6.0.9\spring-webmvc-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-aop\6.0.9\spring-aop-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-beans\6.0.9\spring-beans-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-context\6.0.9\spring-context-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-core\6.0.9\spring-core-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-jcl\6.0.9\spring-jcl-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-expression\6.0.9\spring-expression-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-websocket\6.0.9\spring-websocket-6.0.9.jar;C:\Users\User\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.0.Final\hibernate-validator-8.0.0.Final.jar;C:\Users\User\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\User\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\User\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\User\.m2\repository\org\reflections\reflections\0.10.2\reflections-0.10.2.jar;C:\Users\User\.m2\repository\org\javassist\javassist\3.28.0-GA\javassist-3.28.0-GA.jar;C:\Users\User\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-core\24.1.0\vaadin-core-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-core-internal\24.1.0\vaadin-core-internal-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-lit-template\24.1.0\flow-lit-template-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-html-components\24.1.0\flow-html-components-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-data\24.1.0\flow-data-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-dnd\24.1.0\flow-dnd-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-lumo-theme\24.1.0\vaadin-lumo-theme-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-material-theme\24.1.0\vaadin-material-theme-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-accordion-flow\24.1.0\vaadin-accordion-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-avatar-flow\24.1.0\vaadin-avatar-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-flow-components-base\24.1.0\vaadin-flow-components-base-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-button-flow\24.1.0\vaadin-button-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-checkbox-flow\24.1.0\vaadin-checkbox-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-combo-box-flow\24.1.0\vaadin-combo-box-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-confirm-dialog-flow\24.1.0\vaadin-confirm-dialog-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-custom-field-flow\24.1.0\vaadin-custom-field-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-date-picker-flow\24.1.0\vaadin-date-picker-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-date-time-picker-flow\24.1.0\vaadin-date-time-picker-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-details-flow\24.1.0\vaadin-details-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-time-picker-flow\24.1.0\vaadin-time-picker-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-select-flow\24.1.0\vaadin-select-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-side-nav-flow\24.1.0\vaadin-side-nav-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dialog-flow\24.1.0\vaadin-dialog-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-form-layout-flow\24.1.0\vaadin-form-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-field-highlighter-flow\24.1.0\vaadin-field-highlighter-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-grid-flow\24.1.0\vaadin-grid-flow-24.1.0.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-icons-flow\24.1.0\vaadin-icons-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-virtual-list-flow\24.1.0\vaadin-virtual-list-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-list-box-flow\24.1.0\vaadin-list-box-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-login-flow\24.1.0\vaadin-login-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-messages-flow\24.1.0\vaadin-messages-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-ordered-layout-flow\24.1.0\vaadin-ordered-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-progress-bar-flow\24.1.0\vaadin-progress-bar-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-radio-button-flow\24.1.0\vaadin-radio-button-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-renderer-flow\24.1.0\vaadin-renderer-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-split-layout-flow\24.1.0\vaadin-split-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-tabs-flow\24.1.0\vaadin-tabs-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-text-field-flow\24.1.0\vaadin-text-field-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-upload-flow\24.1.0\vaadin-upload-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-notification-flow\24.1.0\vaadin-notification-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-app-layout-flow\24.1.0\vaadin-app-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-context-menu-flow\24.1.0\vaadin-context-menu-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-menu-bar-flow\24.1.0\vaadin-menu-bar-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dev\24.1.0\vaadin-dev-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dev-server\24.1.0\vaadin-dev-server-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\license-checker\1.12.3\license-checker-1.12.3.jar;C:\Users\User\.m2\repository\com\github\oshi\oshi-core\6.4.1\oshi-core-6.4.1.jar;C:\Users\User\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\User\.m2\repository\net\java\dev\jna\jna-platform\5.13.0\jna-platform-5.13.0.jar;C:\Users\User\.m2\repository\com\nimbusds\nimbus-jose-jwt\9.31\nimbus-jose-jwt-9.31.jar;C:\Users\User\.m2\repository\org\lucee\jcip-annotations\1.0.0\jcip-annotations-1.0.0.jar;C:\Users\User\.m2\repository\com\vaadin\open\8.5.0\open-8.5.0.jar;C:\Users\User\.m2\repository\com\github\javaparser\javaparser-core\3.25.3\javaparser-core-3.25.3.jar;C:\Users\User\.m2\repository\io\methvin\directory-watcher\0.18.0\directory-watcher-0.18.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dev-bundle\24.1.0\vaadin-dev-bundle-24.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.1.0\spring-boot-starter-web-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter\3.1.0\spring-boot-starter-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot\3.1.0\spring-boot-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.1.0\spring-boot-autoconfigure-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.1.0\spring-boot-starter-logging-3.1.0.jar;C:\Users\User\.m2\repository\ch\qos\logback\logback-classic\1.4.7\logback-classic-1.4.7.jar;C:\Users\User\.m2\repository\ch\qos\logback\logback-core\1.4.7\logback-core-1.4.7.jar;C:\Users\User\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.20.0\log4j-to-slf4j-2.20.0.jar;C:\Users\User\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\User\.m2\repository\org\slf4j\jul-to-slf4j\2.0.7\jul-to-slf4j-2.0.7.jar;C:\Users\User\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.1.0\spring-boot-starter-json-3.1.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.0\jackson-datatype-jdk8-2.15.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.0\jackson-datatype-jsr310-2.15.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.0\jackson-module-parameter-names-2.15.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.1.0\spring-boot-starter-tomcat-3.1.0.jar;C:\Users\User\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.8\tomcat-embed-core-10.1.8.jar;C:\Users\User\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.8\tomcat-embed-el-10.1.8.jar;C:\Users\User\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.8\tomcat-embed-websocket-10.1.8.jar;C:\Users\User\.m2\repository\org\springframework\spring-web\6.0.9\spring-web-6.0.9.jar;C:\Users\User\.m2\repository\io\micrometer\micrometer-observation\1.10.7\micrometer-observation-1.10.7.jar;C:\Users\User\.m2\repository\io\micrometer\micrometer-commons\1.10.7\micrometer-commons-1.10.7.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -16,11 +16,12 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire16465419935600958652\surefirebooter-20250103185948460_3.jar C:\Users\User\AppData\Local\Temp\surefire16465419935600958652 2025-01-03T18-59-48_324-jvmRun1 surefire-20250103185948460_1tmp surefire_0-20250103185948460_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire15249843592914129929\surefirebooter-20250109133213365_3.jar C:\Users\User\AppData\Local\Temp\surefire15249843592914129929 2025-01-09T13-32-13_112-jvmRun1 surefire-20250109133213365_1tmp surefire_0-20250109133213365_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\User\EKABAPP\target\test-classes;C:\Users\User\EKABAPP\target\classes;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\User\EKABAPP\target\test-classes;C:\Users\User\EKABAPP\target\classes;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-spring-boot-starter\24.1.0\vaadin-spring-boot-starter-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-spring\24.1.0\vaadin-spring-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-server\24.1.0\flow-server-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\servletdetector\throw-if-servlet3\1.0.2\throw-if-servlet3-1.0.2.jar;C:\Users\User\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar;C:\Users\User\.m2\repository\com\vaadin\external\gwt\gwt-elemental\2.8.2.vaadin2\gwt-elemental-2.8.2.vaadin2.jar;C:\Users\User\.m2\repository\com\vaadin\flow-commons-upload\24.1.0\flow-commons-upload-24.1.0.jar;C:\Users\User\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\User\.m2\repository\org\jsoup\jsoup\1.16.1\jsoup-1.16.1.jar;C:\Users\User\.m2\repository\com\helger\ph-css\7.0.0\ph-css-7.0.0.jar;C:\Users\User\.m2\repository\com\helger\commons\ph-commons\11.0.1\ph-commons-11.0.1.jar;C:\Users\User\.m2\repository\org\ow2\asm\asm\9.5\asm-9.5.jar;C:\Users\User\.m2\repository\com\vaadin\external\gentyref\1.2.0.vaadin1\gentyref-1.2.0.vaadin1.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-compress\1.23.0\commons-compress-1.23.0.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\User\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\User\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\User\.m2\repository\com\vaadin\flow-push\24.1.0\flow-push-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\external\atmosphere\atmosphere-runtime\3.0.3.slf4jvaadin1\atmosphere-runtime-3.0.3.slf4jvaadin1.jar;C:\Users\User\.m2\repository\com\vaadin\flow-client\24.1.0\flow-client-24.1.0.jar;C:\Users\User\.m2\repository\org\springframework\spring-webmvc\6.0.9\spring-webmvc-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-aop\6.0.9\spring-aop-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-beans\6.0.9\spring-beans-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-context\6.0.9\spring-context-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-core\6.0.9\spring-core-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-jcl\6.0.9\spring-jcl-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-expression\6.0.9\spring-expression-6.0.9.jar;C:\Users\User\.m2\repository\org\springframework\spring-websocket\6.0.9\spring-websocket-6.0.9.jar;C:\Users\User\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.0.Final\hibernate-validator-8.0.0.Final.jar;C:\Users\User\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\User\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\User\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\User\.m2\repository\org\reflections\reflections\0.10.2\reflections-0.10.2.jar;C:\Users\User\.m2\repository\org\javassist\javassist\3.28.0-GA\javassist-3.28.0-GA.jar;C:\Users\User\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-core\24.1.0\vaadin-core-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-core-internal\24.1.0\vaadin-core-internal-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-lit-template\24.1.0\flow-lit-template-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-html-components\24.1.0\flow-html-components-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-data\24.1.0\flow-data-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\flow-dnd\24.1.0\flow-dnd-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-lumo-theme\24.1.0\vaadin-lumo-theme-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-material-theme\24.1.0\vaadin-material-theme-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-accordion-flow\24.1.0\vaadin-accordion-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-avatar-flow\24.1.0\vaadin-avatar-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-flow-components-base\24.1.0\vaadin-flow-components-base-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-button-flow\24.1.0\vaadin-button-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-checkbox-flow\24.1.0\vaadin-checkbox-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-combo-box-flow\24.1.0\vaadin-combo-box-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-confirm-dialog-flow\24.1.0\vaadin-confirm-dialog-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-custom-field-flow\24.1.0\vaadin-custom-field-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-date-picker-flow\24.1.0\vaadin-date-picker-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-date-time-picker-flow\24.1.0\vaadin-date-time-picker-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-details-flow\24.1.0\vaadin-details-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-time-picker-flow\24.1.0\vaadin-time-picker-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-select-flow\24.1.0\vaadin-select-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-side-nav-flow\24.1.0\vaadin-side-nav-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dialog-flow\24.1.0\vaadin-dialog-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-form-layout-flow\24.1.0\vaadin-form-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-field-highlighter-flow\24.1.0\vaadin-field-highlighter-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-grid-flow\24.1.0\vaadin-grid-flow-24.1.0.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-icons-flow\24.1.0\vaadin-icons-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-virtual-list-flow\24.1.0\vaadin-virtual-list-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-list-box-flow\24.1.0\vaadin-list-box-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-login-flow\24.1.0\vaadin-login-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-messages-flow\24.1.0\vaadin-messages-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-ordered-layout-flow\24.1.0\vaadin-ordered-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-progress-bar-flow\24.1.0\vaadin-progress-bar-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-radio-button-flow\24.1.0\vaadin-radio-button-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-renderer-flow\24.1.0\vaadin-renderer-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-split-layout-flow\24.1.0\vaadin-split-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-tabs-flow\24.1.0\vaadin-tabs-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-text-field-flow\24.1.0\vaadin-text-field-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-upload-flow\24.1.0\vaadin-upload-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-notification-flow\24.1.0\vaadin-notification-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-app-layout-flow\24.1.0\vaadin-app-layout-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-context-menu-flow\24.1.0\vaadin-context-menu-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-menu-bar-flow\24.1.0\vaadin-menu-bar-flow-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dev\24.1.0\vaadin-dev-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dev-server\24.1.0\vaadin-dev-server-24.1.0.jar;C:\Users\User\.m2\repository\com\vaadin\license-checker\1.12.3\license-checker-1.12.3.jar;C:\Users\User\.m2\repository\com\github\oshi\oshi-core\6.4.1\oshi-core-6.4.1.jar;C:\Users\User\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\User\.m2\repository\net\java\dev\jna\jna-platform\5.13.0\jna-platform-5.13.0.jar;C:\Users\User\.m2\repository\com\nimbusds\nimbus-jose-jwt\9.31\nimbus-jose-jwt-9.31.jar;C:\Users\User\.m2\repository\org\lucee\jcip-annotations\1.0.0\jcip-annotations-1.0.0.jar;C:\Users\User\.m2\repository\com\vaadin\open\8.5.0\open-8.5.0.jar;C:\Users\User\.m2\repository\com\github\javaparser\javaparser-core\3.25.3\javaparser-core-3.25.3.jar;C:\Users\User\.m2\repository\io\methvin\directory-watcher\0.18.0\directory-watcher-0.18.0.jar;C:\Users\User\.m2\repository\com\vaadin\vaadin-dev-bundle\24.1.0\vaadin-dev-bundle-24.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.1.0\spring-boot-starter-web-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter\3.1.0\spring-boot-starter-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot\3.1.0\spring-boot-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.1.0\spring-boot-autoconfigure-3.1.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.1.0\spring-boot-starter-logging-3.1.0.jar;C:\Users\User\.m2\repository\ch\qos\logback\logback-classic\1.4.7\logback-classic-1.4.7.jar;C:\Users\User\.m2\repository\ch\qos\logback\logback-core\1.4.7\logback-core-1.4.7.jar;C:\Users\User\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.20.0\log4j-to-slf4j-2.20.0.jar;C:\Users\User\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\User\.m2\repository\org\slf4j\jul-to-slf4j\2.0.7\jul-to-slf4j-2.0.7.jar;C:\Users\User\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.1.0\spring-boot-starter-json-3.1.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.0\jackson-datatype-jdk8-2.15.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.0\jackson-datatype-jsr310-2.15.0.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.0\jackson-module-parameter-names-2.15.0.jar;C:\Users\User\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.1.0\spring-boot-starter-tomcat-3.1.0.jar;C:\Users\User\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.8\tomcat-embed-core-10.1.8.jar;C:\Users\User\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.8\tomcat-embed-el-10.1.8.jar;C:\Users\User\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.8\tomcat-embed-websocket-10.1.8.jar;C:\Users\User\.m2\repository\org\springframework\spring-web\6.0.9\spring-web-6.0.9.jar;C:\Users\User\.m2\repository\io\micrometer\micrometer-observation\1.10.7\micrometer-observation-1.10.7.jar;C:\Users\User\.m2\repository\io\micrometer\micrometer-commons\1.10.7\micrometer-commons-1.10.7.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\User"/>
+    <property name="testing" value="true"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2024-01-16"/>
@@ -31,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire16465419935600958652\surefirebooter-20250103185948460_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire15249843592914129929\surefirebooter-20250109133213365_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-LTS-58"/>
@@ -60,15 +61,17 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testToString" classname="com.kerasia.UserTest" time="0.109">
-    <failure message="expected: &lt;Πληροφορίες χρήστη: [Όνοματεπώνυμο=Παναγιώτης Παπαδόπουλος, Ηλικία=30, Διεύθυνση=Οδός Δημοκρατίας 15, Δήμος=Δήμος Αθηναίων]&gt; but was: &lt;Πληροφορίες χρήστη: [Όνοματεπώνυμο=Ξ Ξ±Ξ½Ξ±Ξ³ΞΉΟΟΞ·Ο Ξ Ξ±ΟΞ±Ξ΄ΟΟΞΏΟ, Ηλικία=30, Διεύθυνση=ΞΞ΄ΟΟ ΞΞ·ΞΌΞΏΞΊΟΞ±ΟΞ―Ξ±Ο 15, Δήμος=ΞΞ�ΞΌΞΏΟ ΞΞΈΞ·Ξ½Ξ±Ξ―ΟΞ½]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <Πληροφορίες χρήστη: [Όνοματεπώνυμο=Παναγιώτης Παπαδόπουλος, Ηλικία=30, Διεύθυνση=Οδός Δημοκρατίας 15, Δήμος=Δήμος Αθηναίων]> but was: <Πληροφορίες χρήστη: [Όνοματεπώνυμο=Ξ Ξ±Ξ½Ξ±Ξ³ΞΉΟΟΞ·Ο Ξ Ξ±ΟΞ±Ξ΄ΟΟΞΏΟ, Ηλικία=30, Διεύθυνση=ΞΞ΄ΟΟ ΞΞ·ΞΌΞΏΞΊΟΞ±ΟΞ―Ξ±Ο 15, Δήμος=ΞΞ�ΞΌΞΏΟ ΞΞΈΞ·Ξ½Ξ±Ξ―ΟΞ½]>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
-	at com.kerasia.UserTest.testToString(UserTest.java:117)
+  <testcase name="testDisplayUserInfo" classname="com.kerasia.UserTest" time="0.077">
+    <system-out><![CDATA[Εισάγετε όνομα και επώνυμο: Εισάγετε διεύθυνση και περιοχή: Παρακαλώ εισάγετε την ηλικία του ασθενή
+]]></system-out>
+  </testcase>
+  <testcase name="testInputMismatchExceptionInGetAge" classname="com.kerasia.UserTest" time="0.008">
+    <failure message="Expected java.util.InputMismatchException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Expected java.util.InputMismatchException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3083)
+	at com.kerasia.UserTest.testInputMismatchExceptionInGetAge(UserTest.java:67)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
@@ -139,219 +142,28 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]></failure>
-    <system-out><![CDATA[Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Εισάγετε την διεύθυνση του περιστατικού
-Δήμος περιστατικού:
+    <system-out><![CDATA[Εισάγετε όνομα και επώνυμο: Εισάγετε διεύθυνση και περιοχή: Παρακαλώ εισάγετε την ηλικία του ασθενή
+Σφάλμα κατά την είσοδο δεδομένων: null
 ]]></system-out>
     <system-err><![CDATA[Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
 ]]></system-err>
   </testcase>
-  <testcase name="testInputMismatchExceptionInGetAge" classname="com.kerasia.UserTest" time="0.017">
-    <error message="Cannot invoke &quot;String.contains(java.lang.CharSequence)&quot; because the return value of &quot;java.lang.Exception.getMessage()&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "String.contains(java.lang.CharSequence)" because the return value of "java.lang.Exception.getMessage()" is null
-	at com.kerasia.UserTest.testInputMismatchExceptionInGetAge(UserTest.java:69)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
-	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
-	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></error>
-    <system-out><![CDATA[Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
+  <testcase name="testUserInputHandling" classname="com.kerasia.UserTest" time="0.007">
+    <system-out><![CDATA[Εισάγετε όνομα και επώνυμο: Εισάγετε διεύθυνση και περιοχή: Παρακαλώ εισάγετε την ηλικία του ασθενή
 ]]></system-out>
-    <system-err><![CDATA[Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-]]></system-err>
   </testcase>
-  <testcase name="testUserInputHandling" classname="com.kerasia.UserTest" time="0.0">
-    <failure message="expected: &lt;Παναγιώτης Παπαδόπουλος&gt; but was: &lt;Ξ Ξ±Ξ½Ξ±Ξ³ΞΉΟΟΞ·Ο Ξ Ξ±ΟΞ±Ξ΄ΟΟΞΏΟ&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <Παναγιώτης Παπαδόπουλος> but was: <Ξ Ξ±Ξ½Ξ±Ξ³ΞΉΟΟΞ·Ο Ξ Ξ±ΟΞ±Ξ΄ΟΟΞΏΟ>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
-	at com.kerasia.UserTest.testUserInputHandling(UserTest.java:38)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
-	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
-	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></failure>
-    <system-out><![CDATA[Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Εισάγετε την διεύθυνση του περιστατικού
-Δήμος περιστατικού:
+  <testcase name="testSaveDayAndTime" classname="com.kerasia.UserTest" time="0.004">
+    <system-out><![CDATA[Εισάγετε όνομα και επώνυμο: Εισάγετε διεύθυνση και περιοχή: Παρακαλώ εισάγετε την ηλικία του ασθενή
 ]]></system-out>
-    <system-err><![CDATA[Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-]]></system-err>
   </testcase>
-  <testcase name="testSaveDayAndTime" classname="com.kerasia.UserTest" time="0.0">
-    <system-out><![CDATA[Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Εισάγετε την διεύθυνση του περιστατικού
-Δήμος περιστατικού:
+  <testcase name="testGetAge" classname="com.kerasia.UserTest" time="0.003">
+    <system-out><![CDATA[Εισάγετε όνομα και επώνυμο: Εισάγετε διεύθυνση και περιοχή: Παρακαλώ εισάγετε την ηλικία του ασθενή
 ]]></system-out>
-    <system-err><![CDATA[Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-]]></system-err>
   </testcase>
-  <testcase name="testGetAge" classname="com.kerasia.UserTest" time="0.002">
-    <system-out><![CDATA[Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Εισάγετε την διεύθυνση του περιστατικού
-Δήμος περιστατικού:
-]]></system-out>
-    <system-err><![CDATA[Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-]]></system-err>
-  </testcase>
-  <testcase name="testNegativeAgeHandling" classname="com.kerasia.UserTest" time="0.0">
-    <system-out><![CDATA[Παρακαλώ εισάγετε το ονοματεπώνυμο του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
-Παρακαλώ εισάγετε την ηλικία του ασθενή
+  <testcase name="testNegativeAgeHandling" classname="com.kerasia.UserTest" time="0.004">
+    <system-out><![CDATA[Εισάγετε όνομα και επώνυμο: Εισάγετε διεύθυνση και περιοχή: Παρακαλώ εισάγετε την ηλικία του ασθενή
 Η ηλικία πρέπει να είναι θετικός αριθμός. Παρακαλώ δοκιμάστε ξανά.
 Παρακαλώ εισάγετε την ηλικία του ασθενή
-Εισάγετε την διεύθυνση του περιστατικού
-Δήμος περιστατικού:
 ]]></system-out>
-    <system-err><![CDATA[Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.
-]]></system-err>
   </testcase>
 </testsuite>
