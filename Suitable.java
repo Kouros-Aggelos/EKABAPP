@@ -1,6 +1,5 @@
 import java.util.Scanner;
-
-public class Suitable extends Closest {
+public class Suitable {
     public static void main(String[] args) {
         String[][] departments = {
             {"1", "Παθολογική"},
@@ -36,19 +35,27 @@ public class Suitable extends Closest {
             {"31", "Παιδοκαρδιοχειρουργική"},
             {"32", "Παιδοκαρδιολογική"}
         };
-
-        // Display all departments
+        System.out.println("Επιλέξτε είδος περιστατικού από την παρακάτω λίστα:");
         for (String[] department : departments) {
             System.out.println("ID: " + department[0] + ", Name: " + department[1]);
         }
-        System.out.println("Εισάγετε κωδικό τμήματος :");
+
+        System.out.println("Εισάγετε κωδικό τμήματος:");
         Scanner scanner = new Scanner(System.in);
 
-
-        int accidentDepartment = scanner.nextInt(); // Correct usage of the scanner instance
-
-        // Close the scanner
-        scanner.close();
+        try {
+            int accidentDepartment = scanner.nextInt();
+             scanner.nextLine();
+            if (accidentDepartment >= 1 && accidentDepartment <= 32) {
+                System.out.println("Επιλέξατε το τμήμα: " + departments[accidentDepartment - 1][1]);
+            } else {
+                System.out.println("Μη έγκυρος κωδικός τμήματος. Παρακαλώ επιλέξτε μεταξύ 1 και 32.");
+            }
+        } catch (Exception e) {
+            System.out.println("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό.");
+        } finally {
+            scanner.close();
+        }
     }
-    System.out.print(departments[accidentDepartment - 1][1] );
 }
+
