@@ -3,6 +3,9 @@ package com.kerasia;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+
+import com.kerasia.SeverityIndex.SeverityLevel;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -37,15 +40,10 @@ public class User {
             System.out.print("Εισάγετε διεύθυνση και περιοχή: ");
             address = scanner.nextLine();
 
-            /*
-            System.out.print("Εισάγετε επίπεδο σοβαρότητας (1-5): ");
-            severityLevel = scanner.nextInt();
-            if (severityLevel < 1 || severityLevel > 5) {
-                System.out.println("Μη έγκυρο επίπεδο! Προεπιλέγεται το επίπεδο 1.");
-                severityLevel = 1;
-            }
-
-            */
+            SeverityIndex severityIndex = new SeverityIndex();
+            SeverityLevel result = severityIndex.determineSeverity();
+            System.out.println("Το επίπεδο σοβαρότητας που καθορίστηκε είναι: Level " + result.getLevel() + " : " + result.getDescription());
+            severityLevel = result.getLevel();
 
             age = setAge();
 
@@ -86,7 +84,7 @@ public class User {
     public void saveDayAndTime() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         // Αποθηκεύουμε τη μέρα της εβδομάδας στα ελληνικά
-        dayOfWeek = currentDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("el"));
+        dayOfWeek = currentDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("el"));
         // Αποθηκεύουμε την ώρα με τη μορφή HH:mm
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         time = currentDateTime.format(timeFormatter);
