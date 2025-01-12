@@ -1,3 +1,2 @@
-com\kerasia\User.class
-com\kerasia\Ambulance.class
-
+IncidentSeverity.class
+IncidentSeverity$SeverityLevel.class
