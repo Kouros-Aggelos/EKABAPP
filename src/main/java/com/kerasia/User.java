@@ -4,8 +4,6 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-import com.kerasia.SeverityIndex.SeverityLevel;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -40,14 +38,15 @@ public class User {
             System.out.print("Εισάγετε διεύθυνση και περιοχή: ");
             address = scanner.nextLine();
 
-            SeverityIndex severityIndex = new SeverityIndex();
-            SeverityLevel result = severityIndex.determineSeverity();
-            System.out.println("Το επίπεδο σοβαρότητας που καθορίστηκε είναι: Level " + result.getLevel() + " : " + result.getDescription());
-            severityLevel = result.getLevel();
-
             age = setAge();
 
             saveDayAndTime();
+
+            SeverityIndex severityIndex = new SeverityIndex();
+            SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
+            System.out.println("Το επίπεδο σοβαρότητας που καθορίστηκε είναι: Level " + result.getLevel() + " : " + result.getDescription());
+            severityLevel = result.getLevel();
+
 
         } catch (Exception e) {
             System.out.println("Σφάλμα κατά την είσοδο δεδομένων: " + e.getMessage());

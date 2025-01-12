@@ -7,16 +7,7 @@
     <artifactId>EKABAPP</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-<<<<<<< HEAD
-         
-=======
 
- <modules>
-    <module>ui-module</module>
-</modules>
-
-     
->>>>>>> 3851371de9b6ff78f1d8e162698f7c6218a13c5c
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
@@ -30,11 +21,6 @@
             <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
-             <dependency>
-    <groupId>com.vaadin</groupId>
-    <artifactId>vaadin-spring-boot-starter</artifactId>
-    <version>24.1.0</version>
-</dependency>
 
     </dependencies>
 
@@ -52,8 +38,4 @@
             </plugin>
         </plugins>
     </build>
-<<<<<<< HEAD
 </project>
-=======
-</project>
->>>>>>> 3851371de9b6ff78f1d8e162698f7c6218a13c5c
