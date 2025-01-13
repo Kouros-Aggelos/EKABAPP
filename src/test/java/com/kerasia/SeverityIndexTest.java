@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.kerasia.SeverityIndex.InvalidInputException;
+
 class SeverityIndexTest {
 
     private SeverityIndex severityIndex;
@@ -82,6 +84,18 @@ class SeverityIndexTest {
             severityIndex.determineSeverity();
         });
 
-        assertEquals("Λανθασμένη εισαγωγή απάντησης.", exception.getMessage());
+        assertEquals("Λανθασμένη εισαγωγή απάντησης. Παρακαλώ δοκιμάστε ξανά", exception.getMessage());
+    }
+
+    @Test
+    void testInvalidResourcesInput() {
+        InputStream in = new ByteArrayInputStream("όχι\ninvalid\n".getBytes());
+        System.setIn(in);
+
+        Exception exception = assertThrows(NumberFormatException.class, () -> {
+            severityIndex.determineSeverity();
+        });
+
+        assertEquals("For input string: \"invalid\"", exception.getMessage());
     }
 }
