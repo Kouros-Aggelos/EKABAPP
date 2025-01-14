@@ -3,15 +3,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class hospitalfind {
 
-    private String departmentGreeklish;
-    private String dayGreeklish;
-    private String shift;
-
-    // Μετατροπή σε Greeklish θελει και αλλα
     private String convertDepartmentToGreeklish(String department) {
         switch (department) {
             case "Παθολογική": return "Pathologikh";
@@ -49,8 +46,6 @@ public class hospitalfind {
             default: return "Allo";
         }
     }
-
-    // Μετατροπή ημέρας σε Greeklish
     private String convertDayToGreeklish(String dayOfWeek) {
         switch (dayOfWeek.toLowerCase(Locale.ROOT)) {
             case "δευτέρα": return "Deutera";
@@ -64,7 +59,6 @@ public class hospitalfind {
         }
     }
 
-    // Υπολογισμός βάρδιας (Πρωινή/Βραδινή)
     private String calculateShift(String time) {
         if (time.compareTo("08:00") >= 0 && time.compareTo("14:30") < 0) {
             return "Prwini";
@@ -73,19 +67,16 @@ public class hospitalfind {
         }
     }
 
-    // Μέθοδος για να ανατρέξει βάση δεδομένων SQLite 
-    public void findHospitals(String department, String dayOfWeek, String time) {
+    public List<String[]> findHospitals(String department, String dayOfWeek, String time) {
+        List<String[]> hospitals = new ArrayList<>();
         try {
-            // Μετατροπή σε Greeklish
-            departmentGreeklish = convertDepartmentToGreeklish(department);
-            dayGreeklish = convertDayToGreeklish(dayOfWeek);
-            shift = calculateShift(time);
+            String departmentGreeklish = convertDepartmentToGreeklish(department);
+            String dayGreeklish = convertDayToGreeklish(dayOfWeek);
+            String shift = calculateShift(time);
 
-            // Σύνδεση στη βάση δεδομένων SQLite
             String url = "jdbc:sqlite:hospital_system.db";
             Connection connection = DriverManager.getConnection(url);
 
-            // Ερώτημα SQL
             String query = "SELECT h.hospital_name, h.hospital_address, h.area " +
                            "FROM hospitals h " +
                            "JOIN hospital_schedule hs ON h.hospital_id = hs.hospital_id " +
@@ -101,13 +92,14 @@ public class hospitalfind {
 
             ResultSet resultSet = statement.executeQuery();
 
-            // Εμφάνιση αποτελεσμάτων
             System.out.println("Νοσοκομεία που εφημερεύουν:");
             while (resultSet.next()) {
                 String hospitalName = resultSet.getString("hospital_name");
                 String hospitalAddress = resultSet.getString("hospital_address");
                 String area = resultSet.getString("area");
                 System.out.println(hospitalName + " - " + hospitalAddress + " (" + area + ")");
+
+                hospitals.add(new String[]{hospitalName, hospitalAddress, area});
             }
 
             resultSet.close();
@@ -117,5 +109,6 @@ public class hospitalfind {
         } catch (Exception e) {
             System.out.println("Σφάλμα κατά την αναζήτηση νοσοκομείων: " + e.getMessage());
         }
+        return hospitals;
     }
 }
