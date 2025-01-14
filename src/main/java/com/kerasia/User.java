@@ -3,7 +3,6 @@ package com.kerasia;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -19,18 +18,16 @@ public class User {
     private int severityLevel;
     private String dayOfWeek; // Αποθηκεύει τη μέρα της εβδομάδας
     private String time; // Αποθηκεύει την ώρα
+    private Scanner scanner; // Scanner που μεταβιβάζεται μέσω του κατασκευαστή
 
-    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
-
-
-    public User() {
+    // Κατασκευαστής με Scanner
+    public User(Scanner scanner) {
+        this.scanner = scanner;
         getUserInput();
     }
 
-    
     public void getUserInput() {
         try {
-            
             System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
             System.out.print("Εισάγετε όνομα και επώνυμο: ");
             fullName = scanner.nextLine();
@@ -42,39 +39,35 @@ public class User {
 
             saveDayAndTime();
 
-            SeverityIndex severityIndex = new SeverityIndex();
-            SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
+            SeverityIndex severityIndex = new SeverityIndex(scanner);
+            SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
             System.out.println("Το επίπεδο σοβαρότητας που καθορίστηκε είναι: Level " + result.getLevel() + " : " + result.getDescription());
             severityLevel = result.getLevel();
-
-
         } catch (Exception e) {
             System.out.println("Σφάλμα κατά την είσοδο δεδομένων: " + e.getMessage());
         }
     }
 
     public int setAge() throws InputMismatchException {
-            
         int a = -1;
-        boolean validInput = false; 
-        do {   
+        boolean validInput = false;
+        do {
             try {
-                    System.out.println("Παρακαλώ εισάγετε την ηλικία του ασθενή");
-                    a = scanner.nextInt();
-                    scanner.nextLine();
-                    if (a <= 0) {
-                        System.out.println("Η ηλικία πρέπει να είναι θετικός αριθμός. Παρακαλώ δοκιμάστε ξανά.");
-                    } else {
-                        validInput = true;
-                    }
-                } 
-            catch (InputMismatchException e) {
+                System.out.println("Παρακαλώ εισάγετε την ηλικία του ασθενή:");
+                a = scanner.nextInt();
+                scanner.nextLine();
+                if (a <= 0) {
+                    System.out.println("Η ηλικία πρέπει να είναι θετικός αριθμός. Παρακαλώ δοκιμάστε ξανά.");
+                } else {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
                 System.err.println("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο.");
-                scanner.nextLine(); 
+                scanner.nextLine();
                 if (System.getProperty("testing") != null) {
                     throw e;
                 }
-            } 
+            }
         } while (!validInput);
         return a;
     }
@@ -100,7 +93,7 @@ public class User {
         System.out.println("Ώρα Συμβάντος: " + time);
     }
 
-    
+    // Getters
     public String getFullName() {
         return fullName;
     }
@@ -123,12 +116,5 @@ public class User {
 
     public String getTime() {
         return time;
-    }
-    public static void main(String[] args) {
-        // Δημιουργούμε ένα νέο αντικείμενο User
-        User user = new User();
-
-        // Εμφανίζουμε τις πληροφορίες του χρήστη
-        user.displayUserInfo();
     }
 }
