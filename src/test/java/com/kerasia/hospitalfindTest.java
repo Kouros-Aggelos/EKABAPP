@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-class HospitalFindTest {
+class hospitalfindTest {
 
     private hospitalfind hospitalFinder;
 
