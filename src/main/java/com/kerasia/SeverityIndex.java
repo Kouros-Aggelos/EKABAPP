@@ -5,13 +5,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class SeverityIndex {
-
     public class InvalidInputException extends Exception {
         public InvalidInputException(String msg) {
             super(msg);
         }
     }
-
     public enum SeverityLevel {
         LEVEL_1(1, "Critical, immediate life-saving intervention required"),
         LEVEL_2(2, "Emergent, high risk of life-threatening condition"),
@@ -37,64 +35,70 @@ public class SeverityIndex {
         }
     }
 
-    public SeverityLevel severityLevel;
-    Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+    private Scanner scanner;
 
-    public SeverityLevel determineSeverity(Scanner scanner) throws InvalidInputException {
+    public SeverityIndex(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public SeverityLevel severityLevel;
+
+    public SeverityLevel determineSeverity() throws InvalidInputException {
         severityLevel = null;
 
-        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
-        while (true) {
 
-            try {
-                /** Ερώτηση 1:Απαιτείται άμεση παρέμβαση; */
-                System.out.println("Απαιτείται άμεση παρέμβαση; (ναι/όχι): ");
-                String immediateIntervention = scanner.nextLine().trim().toLowerCase();
-                //scanner.nextLine();
-                System.out.println("Η είσοδος για άμεση παρέμβαση: " + immediateIntervention);
+            System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
 
-                switch (immediateIntervention) {
-                    case "ναι" -> {
-                        severityLevel = SeverityLevel.LEVEL_1;
-                        return severityLevel;
+            while (true) {
+
+                try {
+                    /** Ερώτηση 1:Απαιτείται άμεση παρέμβαση; */
+                    System.out.println("Απαιτείται άμεση παρέμβαση; (ναι/όχι): ");
+                    String immediateIntervention = scanner.next().trim().toLowerCase();
+                    scanner.nextLine();
+                    System.out.println("Η είσοδος για άμεση παρέμβαση: " + immediateIntervention);
+
+                    switch (immediateIntervention) {
+                        case "ναι" -> {
+                            severityLevel = SeverityLevel.LEVEL_1;
+                            return severityLevel;
+                        }
+
+                        case "όχι", "οχι" -> {
+                            return evaluateNonImmediateCases(scanner);
+                        }
+
+                        default -> throw new InvalidInputException("Λανθασμένη εισαγωγή απάντησης. Παρακαλώ δοκιμάστε ξανα.");
                     }
-
-                    case "όχι", "οχι" -> {
-                        return evaluateNonImmediateCases(scanner);
-                    }
-
-                    default ->
-                        throw new InvalidInputException("Λανθασμένη εισαγωγή απάντησης. Παρακαλώ δοκιμάστε ξανα.");
+                } catch (InvalidInputException e) {
+                    System.out.println("Σφάλμα: " + e.getMessage());
                 }
-            } catch (InvalidInputException e) {
-                System.out.println("Σφάλμα: " + e.getMessage());
             }
-        }
-
+        
     }
 
     /** ΔΕΝ ΧΡΕΙΑΖΕΤΑΙ ΑΜΕΣΗ ΠΑΡΕΜΒΑΣΗ ΑΡΑ ΥΠΟΛΟΓΙΖΟΝΤΑΙ ΕΠΙΠΕΔΑ 4νόχι-5 */
     private SeverityLevel evaluateNonImmediateCases(Scanner scanner) throws InvalidInputException {
-
+        
         int resources;
 
         while (true) {
             try {
                 // Ερώτηση 2: Πόσοι πόροι χρειάζονται;
                 System.out.print("Πόσοι πόροι χρειάζονται (0, 1, 2 ή περισσότεροι): ");
-                resources = Integer.parseInt(scanner.nextLine().trim()); 
-                
+                resources = Integer.parseInt(scanner.nextLine().trim());
+
                 switch (resources) {
                     case 0 -> {
                         severityLevel = SeverityLevel.LEVEL_5;
                         return severityLevel;
                     }
-
+    
                     case 1 -> {
                         severityLevel = SeverityLevel.LEVEL_4;
                         return severityLevel;
                     }
-
+    
                     default -> {
                         return evaluateVitalSigns(scanner);
                     }
@@ -103,10 +107,9 @@ public class SeverityIndex {
                 System.out.println("Λανθασμένη εισαγωγή αριθμού. Παρακαλώ δοκιμάστε ξανά.");
             }
 
-        }
-
+        }    
+        
     }
-
     // Μέθοδος για τη διαχείριση των ζωτικών ενδείξεων
     private SeverityLevel evaluateVitalSigns(Scanner scanner) throws InvalidInputException {
         while (true) {
@@ -131,14 +134,10 @@ public class SeverityIndex {
             } catch (InvalidInputException e) {
                 System.out.println("Σφάλμα: " + e.getMessage() + " Παρακαλώ δοκιμάστε ξανά.");
             }
-
         }
-
     }
-
     @Override
     public String toString() {
         return "Level: " + severityLevel.getLevel() + ", Description: " + severityLevel.getDescription();
     }
-
 }
