@@ -43,7 +43,7 @@ public class User {
             saveDayAndTime();
 
             SeverityIndex severityIndex = new SeverityIndex();
-            SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
+            SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
             System.out.println("Το επίπεδο σοβαρότητας που καθορίστηκε είναι: Level " + result.getLevel() + " : " + result.getDescription());
             severityLevel = result.getLevel();
 

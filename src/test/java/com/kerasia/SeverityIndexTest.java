@@ -1,7 +1,7 @@
 package com.kerasia;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,18 +25,19 @@ class SeverityIndexTest {
     /*
      * Σε κάθε test χρησιμοποιώ την τεχνική του ByteArrayInputStream για να
      * προσομοιώσω
-     * την είσοδο του χρήστη από το πληκτρολόγιο (που θα ήταν κανονικά μέσω scanner
-     * και System.in)
-     */
+     * την είσοδο του χρήστη από το πληκτρολόγιο 
+     */ 
+     
 
     void testImmediateInterventionRequired() throws InvalidInputException {
         /* Simulate user input for "ναι" (Immediate intervention) */
-        InputStream in = new ByteArrayInputStream("ναι\n".getBytes());
+        String in = "ναι\n";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+
         // αναθέτει τη ροή εισόδου ναι στον Byte πίνακα ώστε η μέθοδος να κρατήσει την
         // τιμή ναι
-        System.setIn(in);
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_1, result);
         assertNotNull(severityIndex);
 
@@ -45,10 +46,10 @@ class SeverityIndexTest {
     @Test
     void testNonImmediateSingleResource() throws InvalidInputException {
         // Simulate user input for "όχι" then "1" (Non-immediate, 1 resource)
-        InputStream in = new ByteArrayInputStream("όχι\n1\n".getBytes());
-        System.setIn(in);
+        String in = "όχι\n1\n";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_4, result);
     }
 
@@ -56,10 +57,10 @@ class SeverityIndexTest {
     void testNonImmediateMultipleResourcesStableVitals() throws InvalidInputException {
         // Simulate user input for "όχι", "2", "ναι" (Non-immediate, 2 resources, stable
         // vitals)
-        InputStream in = new ByteArrayInputStream("όχι\n2\nναι\n".getBytes());
-        System.setIn(in);
+        String in = "όχι\n2\nναι\n";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_3, result);
     }
 
@@ -67,35 +68,39 @@ class SeverityIndexTest {
     void testNonImmediateMultipleResourcesUnstableVitals() throws InvalidInputException {
         // Simulate user input for "όχι", "2", "όχι" (Non-immediate, 2 resources,
         // unstable vitals)
-        InputStream in = new ByteArrayInputStream("όχι\n2\nόχι\n".getBytes());
-        System.setIn(in);
+        String in = "όχι\n2\nόχι\n";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
+
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_2, result);
     }
 
     @Test
     void testInvalidImmediateInput() {
         // Simulate invalid user input
-        InputStream in = new ByteArrayInputStream("invalid\n".getBytes());
-        System.setIn(in);
+        String in = "invalid\n";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
         Exception exception = assertThrows(InvalidInputException.class, () -> {
-            severityIndex.determineSeverity();
+            severityIndex.determineSeverity(scanner);
         });
 
-        assertEquals("Λανθασμένη εισαγωγή απάντησης. Παρακαλώ δοκιμάστε ξανά", exception.getMessage());
+        assertEquals("Λανθασμένη εισαγωγή απάντησης. Παρακαλώ δοκιμάστε ξανα.", exception.getMessage());
     }
 
     @Test
     void testInvalidResourcesInput() {
-        InputStream in = new ByteArrayInputStream("όχι\ninvalid\n".getBytes());
-        System.setIn(in);
+        // Simulate invalid resource input
+        String in = "όχι\ninvalid\n";
+        
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+
 
         Exception exception = assertThrows(NumberFormatException.class, () -> {
-            severityIndex.determineSeverity();
+            severityIndex.determineSeverity(scanner);
         });
 
-        assertEquals("For input string: \"invalid\"", exception.getMessage());
+        assertEquals("Λανθασμένη εισαγωγή αριθμού. Παρακαλώ δοκιμάστε ξανά.", exception.getMessage());
     }
 }
