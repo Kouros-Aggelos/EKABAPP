@@ -33,7 +33,7 @@ public class Main {
         scanner.close();
     }
 
-    private static void handleLowSeverity(User user, hospitalfind hospitalFind) {
+    public static void handleLowSeverity(User user, hospitalfind hospitalFind) {
         // Παράδειγμα: Παίρνουμε νοσοκομεία για την Παθολογική
         String department = "Παθολογική";
         List<String[]> hospitals = hospitalFind.findHospitals(department, user.getDayOfWeek(), user.getTime());
@@ -44,7 +44,7 @@ public class Main {
         System.out.println(result);
     }
 
-    private static void handleHighSeverity(Scanner scanner, User user, hospitalfind hospitalFind) {
+    public static void handleHighSeverity(Scanner scanner, User user, hospitalfind hospitalFind) {
         // Χρήση Suitable για επιλογή τμήματος
         Suitable suitable = new Suitable();
 
@@ -62,7 +62,7 @@ public class Main {
         }
     }
 
-    private static void findAndDisplayClosestHospital(User user, List<String[]> hospitals) {
+    public static void findAndDisplayClosestHospital(User user, List<String[]> hospitals) {
         System.out.println("Υπολογισμός χρόνων διαδρομής προς τα νοσοκομεία...");
 
         // Διεύθυνση χρήστη
@@ -107,7 +107,7 @@ public class Main {
         }
     }
 
-    private static int parseDurationToMinutes(String duration) {
+    public static int parseDurationToMinutes(String duration) {
         String[] parts = duration.split(" ");
         for (int i = 0; i < parts.length; i++) {
             if (parts[i].contains("min")) {
