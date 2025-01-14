@@ -4,8 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.kerasia.User;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -15,45 +13,49 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.InputMismatchException;
 import java.util.Locale;
+import java.util.Scanner;
 import java.lang.reflect.Field;
 
+import org.mockito.MockedStatic;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    private final String userInput = """
-            Παναγιώτης Παπαδόπουλος
-            Οδός Δημοκρατίας 15, Αθήνα
-            25
-            """;
+    private ByteArrayInputStream inContent;
+    private ByteArrayOutputStream outContent;
 
     @BeforeEach
     void setUp() {
         // Redirect system input to the userInput for testing purposes
-        ByteArrayInputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent, true, StandardCharsets.UTF_8));
 
     }
 
     @Test
     void testUserInputHandling() {
+        String userInput = """
+                Παναγιώτης Παπαδόπουλος
+                Οδός Δημοκρατίας 15, Αθήνα
+                25
+                ναι
+                """;
+        
+        inContent = new ByteArrayInputStream(userInput.getBytes());
+        Scanner scanner = new Scanner(inContent);
+
         // Instantiate User to process the input
-        User user = new User();
+        User user = new User(scanner);
 
         // Assert fields based on the input provided
         assertEquals("Παναγιώτης Παπαδόπουλος", user.getFullName());
         assertEquals("Οδός Δημοκρατίας 15, Αθήνα", user.getAddress());
         assertEquals(25, user.getAge());
-    }
-
-    @Test
-    void testGetAge() {
-        // Instantiate User
-        User user = new User();
-
-        // Assert the returned age matches the input
-        assertEquals(25, user.getAge(), "The getAge method should return the correct age.");
+        assertEquals(1, user.getSeverityLevel());
     }
 
     @Test
@@ -67,26 +69,22 @@ class UserTest {
                 Οδός Δημοκρατίας 15, Αθήνα
                 abc
                 """;
-        ByteArrayInputStream in = new ByteArrayInputStream(invalidInput.getBytes());
-        System.setIn(in);
+        inContent = new ByteArrayInputStream(invalidInput.getBytes());
+        System.setIn(inContent);
 
         try {
-            // Create the user object to process input
-            User user = new User();
-    
-            // Ensure InputMismatchException is thrown during age input
-            InputMismatchException exception = assertThrows(InputMismatchException.class, user::setAge);
-    
-            // Verify the exception message if needed
-            assertTrue(exception.getMessage().contains("Μη έγκυρη είσοδος. Παρακαλώ εισάγετε έναν αριθμό ακέραιο."));
+            InputMismatchException exception = assertThrows(InputMismatchException.class, () -> {
+                new User(new Scanner(System.in));
+            });
+
+            assertTrue(exception.getMessage().contains("Μη έγκυρη είσοδος"),
+                   "The exception message should indicate invalid input.");
         } finally {
             // Restore System input
             System.setIn(System.in);
             System.clearProperty("testing");
         }
     }
-
-        
 
     @Test
     void testNegativeAgeHandling() {
@@ -96,100 +94,113 @@ class UserTest {
                 Οδός Δημοκρατίας 15, Αθήνα
                 -10
                 25
+                ναι
                 """;
-        ByteArrayInputStream in = new ByteArrayInputStream(negativeInput.getBytes());
-        System.setIn(in);
+
+        inContent = new ByteArrayInputStream(negativeInput.getBytes());
+        Scanner scanner = new Scanner(inContent);
 
         // Create User and verify correct handling of valid input
-        User user = new User();
+        User user = new User(scanner);
 
         // Assert that the age is correctly set to the valid value (25)
         assertEquals(25, user.getAge(), "The negative input should be ignored, and valid input should set the age.");
     }
-
 
     @Test
     void testSaveDayAndTime() {
         LocalDateTime fixedDateTime = LocalDateTime.of(2025, 1, 12, 10, 30);
         try (MockedStatic<LocalDateTime> mockedStatic = mockStatic(LocalDateTime.class)) {
             mockedStatic.when(LocalDateTime::now).thenReturn(fixedDateTime);
-            
+
+            String userInput = """
+                    Παναγιώτης Παπαδόπουλος
+                    Οδός Δημοκρατίας 15, Αθήνα
+                    25
+                    ναι
+                    """;
+
+            inContent = new ByteArrayInputStream(userInput.getBytes());
+            Scanner scanner = new Scanner(inContent);
+
             // Instantiate User to save the day and time
-            User user = new User();
+            User user = new User(scanner);
 
-        // Get the current date and time for validation
-        LocalDateTime now = LocalDateTime.now();
-        String expectedDayOfWeek = fixedDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("el"));
-        String expectedTime = fixedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+            // Get the current date and time for validation
+            String expectedDayOfWeek = fixedDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL,
+                    Locale.forLanguageTag("el"));
+            String expectedTime = fixedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
 
-        // Assert the day of the week and time
-        assertEquals(expectedDayOfWeek, user.getDayOfWeek());
-        assertEquals(expectedTime, user.getTime());
+            // Assert the day of the week and time
+            assertEquals(expectedDayOfWeek, user.getDayOfWeek());
+            assertEquals(expectedTime, user.getTime());
         }
     }
 
     @Test
     void testDisplayUserInfo() {
-          ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-          System.setOut(new PrintStream(outContent, true, StandardCharsets.UTF_8));
-        
-          // Instantiate User to verify correct display of user info
-        User user = new User();
-        
+
+        String userInput = """
+            Παναγιώτης Παπαδόπουλος
+            Οδός Δημοκρατίας 15, Αθήνα
+            25
+            ναι
+            """;
+
+        inContent = new ByteArrayInputStream(userInput.getBytes());
+        Scanner scanner = new Scanner(inContent);
+
+        // Instantiate User to verify correct display of user info
+        User user = new User(scanner);
         user.displayUserInfo();
-        String output = outContent.toString(StandardCharsets.UTF_8);
 
-
+        
         // Expected outcome
-        String expectedOutput = """
-                --- Πληροφορίες Ασθενούς ---
-                Ονοματεπώνυμο: Παναγιώτης Παπαδόπουλος
-                Διεύθυνση: Οδός Δημοκρατίας 15, Αθήνα
-                Ηλικία Ασθενούς: 25
-                Επίπεδο Σοβαρότητας: 0
-                Μέρα Συμβάντος: %s
-                Ώρα Συμβάντος: %s
-                """.formatted(
-                user.getDayOfWeek(),
-                user.getTime()
-        );
-
-        // Συγκρίνουμε την έξοδο (χρειάζεται να τροποποιηθεί αν χρησιμοποιηθεί πραγματική έξοδος)
-        assertTrue(expectedOutput.contains("Πληροφορίες Ασθενούς"));
-        assertTrue(expectedOutput.contains(user.getFullName()));
-        assertTrue(expectedOutput.contains(user.getAddress()));
-        assertTrue(expectedOutput.contains(String.valueOf(user.getAge()))); 
-        assertTrue(expectedOutput.contains(user.getDayOfWeek()));
-        assertTrue(expectedOutput.contains(user.getTime()));
+        String output = outContent.toString(StandardCharsets.UTF_8);
+                
+        // Συγκρίνουμε την έξοδο (χρειάζεται να τροποποιηθεί αν χρησιμοποιηθεί
+        // πραγματική έξοδος)
+        assertTrue(output.contains("Πληροφορίες Ασθενούς"));
+        assertTrue(output.contains("Παναγιώτης Παπαδόπουλος"));
+        assertTrue(output.contains("Οδός Δημοκρατίας 15, Αθήνα"));
+        assertTrue(output.contains("25"));
+        assertTrue(output.contains(user.getDayOfWeek()));
+        assertTrue(output.contains(user.getTime()));
     }
 
     @Test
     void testSeverityLevelSetting() throws Exception {
-    // Mock της SeverityIndex
-    SeverityIndex mockSeverityIndex = mock(SeverityIndex.class);
-    when(mockSeverityIndex.determineSeverity()).thenReturn(SeverityIndex.SeverityLevel.LEVEL_3);
+        // Mock της SeverityIndex
+        SeverityIndex mockSeverityIndex = mock(SeverityIndex.class);
+        when(mockSeverityIndex.determineSeverity()).thenReturn(SeverityIndex.SeverityLevel.LEVEL_3);
+        
+        //Simulate scanner input
+        String simulatedInput = """
+            Παναγιώτης Παπαδόπουλος
+            Οδός Δημοκρατίας 15, Αθήνα
+            25
+            """;
+        Scanner scanner = new Scanner(new ByteArrayInputStream(simulatedInput.getBytes()));
+        
 
-    // Δημιουργία χρήστη
-    User user = new User();
+        // Δημιουργία χρήστη
+        User user = new User(scanner);
 
-    // Αντικατάσταση του SeverityIndex με το mock χρησιμοποιώντας Reflection
-    Field severityIndexField = User.class.getDeclaredField("severityIndex");
-    severityIndexField.setAccessible(true);
-    severityIndexField.set(user, mockSeverityIndex);
+        // Αντικατάσταση του SeverityIndex με το mock χρησιμοποιώντας Reflection
+        Field severityIndexField = User.class.getDeclaredField("severityIndex");
+        severityIndexField.setAccessible(true);
+        severityIndexField.set(user, mockSeverityIndex);
 
-    // Εκτέλεση του κώδικα και έλεγχος
-    assertEquals(3, user.getSeverityLevel(), "Το επίπεδο σοβαρότητας δεν είναι σωστό.");
-}
+        user.getUserInput();
 
-
-
+        // Εκτέλεση του κώδικα και έλεγχος
+        assertEquals(3, user.getSeverityLevel(), "Το επίπεδο σοβαρότητας δεν είναι σωστό.");
+    }
 
     @AfterEach
     void tearDown() {
         System.setIn(System.in);
-        System.setOut(System.out); 
+        System.setOut(System.out);
         System.clearProperty("testing");
+    }
 }
-}
-
-

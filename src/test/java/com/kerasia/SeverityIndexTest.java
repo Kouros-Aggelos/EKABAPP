@@ -18,7 +18,7 @@ class SeverityIndexTest {
     @BeforeEach
     void setUp() {
         System.out.println("setUp is called");
-        severityIndex = new SeverityIndex();
+        //severityIndex = new SeverityIndex();
     }
 
     @Test
@@ -34,10 +34,11 @@ class SeverityIndexTest {
         String in = "ναι\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
+        severityIndex = new SeverityIndex(scanner);
         // αναθέτει τη ροή εισόδου ναι στον Byte πίνακα ώστε η μέθοδος να κρατήσει την
         // τιμή ναι
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_1, result);
         assertNotNull(severityIndex);
 
@@ -48,8 +49,9 @@ class SeverityIndexTest {
         // Simulate user input for "όχι" then "1" (Non-immediate, 1 resource)
         String in = "όχι\n1\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+        severityIndex = new SeverityIndex(scanner);
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_4, result);
     }
 
@@ -59,8 +61,9 @@ class SeverityIndexTest {
         // vitals)
         String in = "όχι\n2\nναι\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+        severityIndex = new SeverityIndex(scanner);
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_3, result);
     }
 
@@ -70,9 +73,10 @@ class SeverityIndexTest {
         // unstable vitals)
         String in = "όχι\n2\nόχι\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+        severityIndex = new SeverityIndex(scanner);
 
 
-        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity(scanner);
+        SeverityIndex.SeverityLevel result = severityIndex.determineSeverity();
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_2, result);
     }
 
@@ -84,8 +88,9 @@ class SeverityIndexTest {
         //then caught and after the correct input LEVEL_1 is returned
         String in = "invalid\nναι\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+        severityIndex = new SeverityIndex(scanner);
 
-        SeverityIndex.SeverityLevel level = severityIndex.determineSeverity(scanner);
+        SeverityIndex.SeverityLevel level = severityIndex.determineSeverity();
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_1, level);
     }
 
@@ -93,11 +98,24 @@ class SeverityIndexTest {
     void testInvalidResourcesInput() throws InvalidInputException {
         // Simulate invalid resource input and then valid
         String in = "όχι\ninvalid\n2\nναι\n";
-        
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+        severityIndex = new SeverityIndex(scanner);
 
 
-        SeverityIndex.SeverityLevel level = severityIndex.determineSeverity(scanner);
+        SeverityIndex.SeverityLevel level = severityIndex.determineSeverity();
         assertEquals(SeverityIndex.SeverityLevel.LEVEL_3, level);
     }
+
+    @Test
+    void testToStringOutput() throws SeverityIndex.InvalidInputException {
+        // Simulate input and verify the toString() method
+        String in = "ναι\n";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
+        severityIndex = new SeverityIndex(scanner);
+
+        severityIndex.determineSeverity();
+        String expectedOutput = "Level: 1, Description: Critical, immediate life-saving intervention required";
+        assertEquals(expectedOutput, severityIndex.toString());
+    }
 }
+
