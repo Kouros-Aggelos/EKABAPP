@@ -16,13 +16,13 @@ public class MainTest {
 
     @Mock
     private User user;
-    
+
     @Mock
     private hospitalfind hospitalfind;
-    
+
     @Mock
     private Scanner scanner;
-    
+
     @Mock
     private Suitable suitable;
 
@@ -30,10 +30,7 @@ public class MainTest {
     private Closest closest;
 
     @Mock
-    private hospitalfind finder;  // Mocking του finder
-
-
-
+    private hospitalfind finder; // Mocking του finder
 
     @BeforeEach
     void setUp() {
@@ -43,9 +40,10 @@ public class MainTest {
     @Test
     void testHandleLowSeverity() {
         // Setup mock user and behavior
-        when(user.getSeverityLevel()).thenReturn(1);  // Επίπεδο σοβαρότητας 1
+        when(user.getSeverityLevel()).thenReturn(1); // Επίπεδο σοβαρότητας 1
         when(hospitalfind.findHospitals(anyString(), anyString(), anyString()))
-            .thenReturn(List.of(new String[]{"Hospital A", "Address A"}, new String[]{"Hospital B", "Address B"}));
+                .thenReturn(List.of(new String[] { "Hospital A", "Address A" },
+                        new String[] { "Hospital B", "Address B" }));
 
         // Κλήση της μεθόδου
         Main.handleLowSeverity(user, hospitalfind);
@@ -59,10 +57,9 @@ public class MainTest {
     @Test
     void testHandleHighSeverity() {
         // Setup mock user and behavior
-        when(user.getSeverityLevel()).thenReturn(5);  // Επίπεδο σοβαρότητας 5
+        when(user.getSeverityLevel()).thenReturn(5); // Επίπεδο σοβαρότητας 5
         when(suitable.selectDepartment(scanner)).thenReturn("Χειρουργική");
         when(hospitalfind.findHospitals(eq("Χειρουργική"), anyString(), anyString()));
-                
 
         // Κλήση της μεθόδου
         Main.handleHighSeverity(scanner, user, hospitalfind);
@@ -72,4 +69,3 @@ public class MainTest {
         verify(hospitalfind).findHospitals(eq("Χειρουργική"), anyString(), anyString());
     }
 }
-
