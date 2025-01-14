@@ -82,8 +82,8 @@ public class SeverityIndex {
             try {
                 // Ερώτηση 2: Πόσοι πόροι χρειάζονται;
                 System.out.print("Πόσοι πόροι χρειάζονται (0, 1, 2 ή περισσότεροι): ");
-                resources = Integer.parseInt(scanner.nextLine().trim());
-
+                resources = Integer.parseInt(scanner.nextLine().trim()); 
+                
                 switch (resources) {
                     case 0 -> {
                         severityLevel = SeverityLevel.LEVEL_5;

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+//import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -77,30 +77,27 @@ class SeverityIndexTest {
     }
 
     @Test
-    void testInvalidImmediateInput() {
+    void testInvalidImmediateInput() throws InvalidInputException {
         // Simulate invalid user input
-        String in = "invalid\n";
+
+        //With the invalid input, the InvalidINputException is thrown
+        //then caught and after the correct input LEVEL_1 is returned
+        String in = "invalid\nναι\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
-        Exception exception = assertThrows(InvalidInputException.class, () -> {
-            severityIndex.determineSeverity(scanner);
-        });
-
-        assertEquals("Λανθασμένη εισαγωγή απάντησης. Παρακαλώ δοκιμάστε ξανα.", exception.getMessage());
+        SeverityIndex.SeverityLevel level = severityIndex.determineSeverity(scanner);
+        assertEquals(SeverityIndex.SeverityLevel.LEVEL_1, level);
     }
 
     @Test
-    void testInvalidResourcesInput() {
-        // Simulate invalid resource input
-        String in = "όχι\ninvalid\n";
+    void testInvalidResourcesInput() throws InvalidInputException {
+        // Simulate invalid resource input and then valid
+        String in = "όχι\ninvalid\n2\nναι\n";
         
         Scanner scanner = new Scanner(new ByteArrayInputStream(in.getBytes()));
 
 
-        Exception exception = assertThrows(NumberFormatException.class, () -> {
-            severityIndex.determineSeverity(scanner);
-        });
-
-        assertEquals("Λανθασμένη εισαγωγή αριθμού. Παρακαλώ δοκιμάστε ξανά.", exception.getMessage());
+        SeverityIndex.SeverityLevel level = severityIndex.determineSeverity(scanner);
+        assertEquals(SeverityIndex.SeverityLevel.LEVEL_3, level);
     }
 }
