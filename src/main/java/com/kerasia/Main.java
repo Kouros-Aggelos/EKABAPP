@@ -20,34 +20,38 @@ public class Main {
         // 5) Δημιουργία αντικειμένου hospitalfind
         hospitalfind hospitalFind = new hospitalfind();
 
+        Closest closest = new Closest();
+
         // 6) Διαχείριση ανάλογα με το επίπεδο σοβαρότητας
         if (severityLevel == 1 || severityLevel == 2 || severityLevel == 3) {
-            handleLowSeverity(user, hospitalFind);
+            handleLowSeverity(user, hospitalFind, closest);
         } else if (severityLevel == 4 || severityLevel == 5) {
-            handleHighSeverity(scanner, user, hospitalFind);
+            Suitable suitable = new Suitable();
+            handleHighSeverity(scanner, user, hospitalFind, suitable);
         } else {
             System.out.println("Μη έγκυρο επίπεδο σοβαρότητας.");
         }
 
         // 7) Κλείσιμο του Scanner
         scanner.close();
+
+        System.out.println("Άνοιγμα του χάρτη...");
+        MapLauncher mapLauncher = new MapLauncher();
+        mapLauncher.launchMap();
     }
 
-    public static void handleLowSeverity(User user, hospitalfind hospitalFind) {
+    public static void handleLowSeverity(User user, hospitalfind hospitalFind, Closest closest) {
         // Παράδειγμα: Παίρνουμε νοσοκομεία για την Παθολογική
         String department = "Παθολογική";
         List<String[]> hospitals = hospitalFind.findHospitals(department, user.getDayOfWeek(), user.getTime());
 
         System.out.println("Αναζητείται το κοντινότερο νοσοκομείο...");
-        Closest closest = new Closest();
         String result = closest.findClosestHospital(user, hospitalFind);
         System.out.println(result);
     }
 
-    public static void handleHighSeverity(Scanner scanner, User user, hospitalfind hospitalFind) {
-        // Χρήση Suitable για επιλογή τμήματος
-        Suitable suitable = new Suitable();
-
+    public static void handleHighSeverity(Scanner scanner, User user, hospitalfind hospitalFind, Suitable suitable) {
+        
         // Επιλογή τμήματος από τον χρήστη
         String selectedDepartment = suitable.selectDepartment(scanner);
         System.out.println("Επιλέχθηκε τμήμα: " + selectedDepartment);

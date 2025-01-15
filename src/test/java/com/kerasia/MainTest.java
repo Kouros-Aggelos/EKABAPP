@@ -1,9 +1,8 @@
 package com.kerasia;
 
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,55 +20,82 @@ public class MainTest {
     private hospitalfind hospitalfind;
 
     @Mock
-    private Scanner scanner;
-
-    @Mock
     private Suitable suitable;
 
     @Mock
     private Closest closest;
 
+    @InjectMocks
+    private Main main;
+
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this); // Αρχικοποίηση των mocks
+        MockitoAnnotations.openMocks(this);
 
-        // Γενικά stubbing
-        when(user.getSeverityLevel()).thenReturn(1); // Default σοβαρότητα
-        when(closest.findClosestHospital(eq(user), any(hospitalfind.class)))
-                .thenReturn("Closest Hospital");
+        // Προκαθορισμένη συμπεριφορά για τα mocks
+        when(user.getSeverityLevel()).thenReturn(1);
+        when(suitable.selectDepartment(any(Scanner.class))).thenReturn("Παθολογική");
+        when(hospitalfind.findHospitals(eq("Παθολογική"), eq("TestLocation"), eq("TestType")))
+                .thenReturn(List.of(
+                        new String[]{"Hospital A", "Address A"},
+                        new String[]{"Hospital B", "Address B"}
+                ));
     }
 
+    
     @Test
     void testHandleLowSeverity() {
-        // Setup mock behavior για το hospitalfind
-        when(hospitalfind.findHospitals(eq("Παθολογική"), anyString(), anyString()))
+        // Mock δεδομένα
+        when(user.getSeverityLevel()).thenReturn(1); // Ρύθμιση χαμηλής σοβαρότητας
+        when(user.getDayOfWeek()).thenReturn("TestLocation");
+        when(user.getTime()).thenReturn("TestType");
+        
+        String department = "Παθολογική";
+        
+    
+        // Mock για τη μέθοδο findHospitals
+        when(hospitalfind.findHospitals(eq(department), eq("TestLocation"), eq("TestType")))
                 .thenReturn(List.of(
-                        new String[] { "Hospital A", "Address A" },
-                        new String[] { "Hospital B", "Address B" }));
-
+                        new String[]{"Hospital A", "Address A"},
+                        new String[]{"Hospital B", "Address B"}));
+    
+        // Mock για τη findClosestHospital
+        when(closest.findClosestHospital(eq(user), eq(hospitalfind)))
+                .thenReturn("Hospital A");
+    
         // Κλήση της μεθόδου
-        Main.handleLowSeverity(user, hospitalfind);
-
-        // Επαλήθευση των αλληλεπιδράσεων
-        verify(hospitalfind).findHospitals(eq("Παθολογική"), anyString(), anyString());
+        Main.handleLowSeverity(user, hospitalfind, closest);
+    
+        // Επαλήθευση ότι έγινε η σωστή κλήση
+        verify(hospitalfind).findHospitals(eq(department), eq("TestLocation"), eq("TestType"));
         verify(closest).findClosestHospital(eq(user), eq(hospitalfind));
     }
-
+    
     @Test
     void testHandleHighSeverity() {
-        // Setup mock behavior
-        when(user.getSeverityLevel()).thenReturn(5); // Επίπεδο σοβαρότητας 5
-        when(suitable.selectDepartment(scanner)).thenReturn("Χειρουργική");
-        when(hospitalfind.findHospitals(eq("Χειρουργική"), anyString(), anyString()))
+        // Mock δεδομένα
+        Scanner scanner = new Scanner("3\n"); // Mock είσοδος από τον χρήστη
+        when(user.getSeverityLevel()).thenReturn(5); // Ρύθμιση υψηλής σοβαρότητας
+        when(user.getDayOfWeek()).thenReturn("TestLocation");
+        when(user.getTime()).thenReturn("TestType");
+
+        String department = "Χειρουργική";
+    
+        // Mock για τη μέθοδο selectDepartment
+        when(suitable.selectDepartment(any(Scanner.class))).thenReturn(department);
+    
+
+        // Mock για τη μέθοδο findHospitals
+        when(hospitalfind.findHospitals(eq(department), eq("TestLocation"), eq("TestType")))
                 .thenReturn(List.of(
-                        new String[] { "Hospital C", "Address C" },
-                        new String[] { "Hospital D", "Address D" }));
-
+                        new String[]{"Hospital C", "Address C"},
+                        new String[]{"Hospital D", "Address D"}));
+    
         // Κλήση της μεθόδου
-        Main.handleHighSeverity(scanner, user, hospitalfind);
-
-        // Επαλήθευση των αλληλεπιδράσεων
-        verify(suitable).selectDepartment(scanner);
-        verify(hospitalfind).findHospitals(eq("Χειρουργική"), anyString(), anyString());
+        Main.handleHighSeverity(scanner, user, hospitalfind, suitable);
+    
+        // Επαλήθευση ότι έγινε η σωστή κλήση
+        verify(suitable).selectDepartment(any(Scanner.class));
+        verify(hospitalfind).findHospitals(eq(department), eq("TestLocation"), eq("TestType"));
     }
-}
+}    
