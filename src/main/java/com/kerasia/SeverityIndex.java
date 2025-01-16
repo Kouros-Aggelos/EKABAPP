@@ -52,7 +52,6 @@ public class SeverityIndex {
             while (true) {
 
                 try {
-                    /** Ερώτηση 1:Απαιτείται άμεση παρέμβαση; */
                     System.out.println("Απαιτείται άμεση παρέμβαση; (ναι/όχι): ");
                     String immediateIntervention = scanner.next().trim().toLowerCase();
                     scanner.nextLine();
@@ -77,14 +76,12 @@ public class SeverityIndex {
         
     }
 
-    /** ΔΕΝ ΧΡΕΙΑΖΕΤΑΙ ΑΜΕΣΗ ΠΑΡΕΜΒΑΣΗ ΑΡΑ ΥΠΟΛΟΓΙΖΟΝΤΑΙ ΕΠΙΠΕΔΑ 4νόχι-5 */
     private SeverityLevel evaluateNonImmediateCases(Scanner scanner) throws InvalidInputException {
         
         int resources;
 
         while (true) {
             try {
-                // Ερώτηση 2: Πόσοι πόροι χρειάζονται;
                 System.out.print("Πόσοι πόροι χρειάζονται (0, 1, 2 ή περισσότεροι): ");
                 resources = Integer.parseInt(scanner.nextLine().trim());
 
@@ -110,11 +107,10 @@ public class SeverityIndex {
         }    
         
     }
-    // Μέθοδος για τη διαχείριση των ζωτικών ενδείξεων
+
     private SeverityLevel evaluateVitalSigns(Scanner scanner) throws InvalidInputException {
         while (true) {
             try {
-                /** Ερώτηση 3: Είναι σταθερές οι ζωτικές ενδείξεις; */
                 System.out.print("Είναι οι ζωτικές ενδείξεις εντός φυσιολογικών ορίων; (ναι/όχι): ");
                 String vitalSigns = scanner.nextLine().trim().toLowerCase();
 
