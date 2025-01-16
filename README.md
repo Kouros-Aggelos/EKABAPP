@@ -22,7 +22,7 @@
 #### Συνδεθείτε στην ενσωματωμένη βάση μέσω της εξής διαδικασίας:
 ##### (έχοντας μπει στο path του project μας, στο root directory)
    cd src/main/resources
-   .\slqlite3 hospital_system.db
+   .\sqllite3 hospital_system.db
    cd .. (x3)
 
 #### Μεταγλωττίστε όλα τα αρχεία Java μαζί με τις βιβλιοθήκες με την εντολή:
