@@ -70,18 +70,18 @@ mvn clean install
         └───com
             └───kerasia
 
-.github/workflows: Περιέχει αρχεία ρυθμίσεων για αυτοματοποιημένες ροές εργασίας και εκτέλεση αυτοματοποιημένων διαδικασιών ελέγχο (CI/CD) μέσω του GitHub Actions.
+.github/workflows: Περιέχει αρχεία ρυθμίσεων για αυτοματοποιημένες ροές εργασίας και εκτέλεση αυτοματοποιημένων διαδικασιών ελέγχου (CI/CD) μέσω του GitHub Actions.
 
-.vscode: Εξασφαλίζει κοινές ρυθμίσεις όλους τους χρήστες του αποθετηρίου , περιέχοντας ρυθμίσεις .json.
+.vscode: Εξασφαλίζει κοινές ρυθμίσεις .json. για όλους τους χρήστες του αποθετηρίου.
 
 config/checkstyle: Χρήσιμο για τη διασφάλιση ότι ο κώδικας ακολουθεί προκαθορισμένα πρότυπα μορφοποίησης.
 
-lib: Αποθηκεύει εξωτερικές βιβλιοθήκες (JAR αρχεία) που απαιτούνται για τη λειτουργία της εφαρμογής, συγκεκριμένα για την πρόσβαση στην sqlite και την διεκπαιρέωση της κλάσης closest που αξιοποιεί βιβλιοθήκες json(json-20250107.jar , sqlite-jdbc-3.47.2.0.jar).
+lib: Αποθηκεύει εξωτερικές βιβλιοθήκες (JAR αρχεία) που απαιτούνται για τη λειτουργία της εφαρμογής, συγκεκριμένα για την πρόσβαση στην sqlite και την διεκπεραίωση της κλάσης closest που αξιοποιεί βιβλιοθήκες json(json-20250107.jar , sqlite-jdbc-3.47.2.0.jar).
 
 src/main/java/com/kerasia: Περιέχει όλο τον πηγαίο κώδικα της εφαρμογής.
    Closest: Υπολογισμός απόστασης του κοντινότερου νοσοκομείου.
    Frommap: Υπολογισμός χρόνου διαδρομής μέσω API και του internal χάρτη index.html.
-   MapLauncher:
+   MapLauncher:Κλάση που πραγματοποιεί την σύνδεση με τον external ekab.html χάρτη.
    hospitalfind: Κλάση που πραγματοποιεί την σύνδεση με την ενσωματωμένη βάση δεδομένων.
    SeverityIndex: Υπολογισμός σοβαρότητας περιστατικού βάσει ESI algorithm.
    Suitable: Επιλογή κοντινότερου και καταλληλότερου νοσοκομείου.
@@ -93,7 +93,7 @@ src/main/WEBAPP: Περιέχει html,css,js αρχεία που σχετίζο
 
 src/test/java/com/kerasia: Περιέχει τις test κλάσεις (UserTest, ClosestTest, MainTest, hospitalfinderTest, SuitableTest, SeverityIndexTest) για την επαλήθευση της ορθής λειτουργίας του πηγαίου κώδικα.
 
-target: Χρησιμοποιείται από το Maven για να αποθηκεύει τα παραγόμενα αρχεία (build artifacts), κυρίως τα .class αρχεία.
+target: Χρησιμοποιείται από το Maven για να αποθηκεύει τα παραγόμενα αρχεία (build artifacts) τα οποία δημιουργούνται αυτόματα κατά την μεταγλώττιση του project.
 
   classes/com/kerasia: Περιέχει τα παραγόμενα .class αρχεία για την εφαρμογή.
 
@@ -116,15 +116,15 @@ pom.xml
 README.md: Οδηγίες χρήσης και περιγραφή.
 
 ## Διάγραμμα UML
-    ![Το διάγραμμα UML της εφαρμογής μας.](/umldiagram.png)
+ https://github.com/Kouros-Aggelos/EKABAPP/blob/922f200871b8b92e418803fc2d126bd108043e30/umldiagram.png 
 
 
 ## Δομές Δεδομένων και Αλγόριθμοι
 
-### Βάση Δεδομένων (SQLite):(????)
+### Βάση Δεδομένων (SQLite)
 Πίνακας hospitals (ονόματα περιοχές νοσοκομείων)
-Πίνακας hospital_schedule (εφημερείες νοσοκομείων)
-Πίνακας schedule (εφημερείες διαφόρων departments)
+Πίνακας hospital_schedule (εφημερίες νοσοκομείων)
+Πίνακας schedule (εφημερίες διαφόρων departments)
 
 ### Αλγόριθμοι:
 ESIcode:Ο αλγόριθμο ESI αξιολογεί την σοβαρότητα του περιστατικού και το ιεραρχεί σε μια κλίμακα 1-5 στην κλάση SeverityIndex.
@@ -133,7 +133,7 @@ Pythagorean distance formula: Αλγόριθμος -μαθηματικός φο�
 
 ### Δομές Δεδομένων!!!!!!!!!
 
-## Προαπαιτούμενα
+(## Προαπαιτούμενα
 
 Κατεβασμένα αρχεία JAR:
 
@@ -141,8 +141,7 @@ json-20250107.jar
 
 sqlite-jdbc-3.47.2.0.jar
 
-SQLite3 tools.
-
+SQLite3 tools.)
 
 
 ## API Documentation
@@ -170,9 +169,9 @@ arduino
 Copy code
 https://example.com/*
 http://localhost:8080/*
-4. Αποθήκευση Αλλαγών
+#### 4. Αποθήκευση Αλλαγών
 Αφού προσθέσεις τα URLs, κάνε κλικ στο "Save".
-5. Δοκιμή της Εφαρμογής
+#### 5. Δοκιμή της Εφαρμογής
 Φόρτωσε ξανά την εφαρμογή σου και έλεγξε αν το πρόβλημα λύθηκε.
 Σημαντικές Παρατηρήσεις:
 Αν δουλεύεις τοπικά, πρέπει να προσθέσεις το localhost στις επιτρεπόμενες διευθύνσεις, π.χ., http://localhost:3000/* (ή τη θύρα που χρησιμοποιείς).
@@ -196,17 +195,17 @@ Java uses the system default character encoding for input, but in your case, it 
 #### 2. Ensure Your IDE Supports UTF-8
 If you're using an IDE like IntelliJ IDEA, Eclipse, or Visual Studio Code, make sure your IDE is configured to use UTF-8 encoding for your source code files and console output.
 
-#### In VS Code:
+##### In VS Code:
  Open Settings (Ctrl + ,).
 Search for Files: Encoding and set it to utf8.
-#### In IntelliJ IDEA:
+##### In IntelliJ IDEA:
 Go to File > Settings > Editor > File Encodings and set both Global Encoding and Project Encoding to UTF-8.
-### 3. Test Greek Input
+#### 3. Test Greek Input
 After these changes, run your program and test the Greek inputs ("ναι" or "όχι"). It should now work without throwing the InvalidInputException for valid inputs.
 If you're still encountering issues, let me know!
 
 ## Συγγραφείς
-Η εφαρμογή αυτή δημιουργήθηκε στα πλαίσια εκπόνησης της εργασίας του μαθήματος Προγραμματισμού ΙΙ ,του τμήματος Διοικητικής Επιστήμης και Τεχνολογίας που ανήκει Οικονομικού Πανεπιστημίου Αθηνών.
+Η εφαρμογή αυτή δημιουργήθηκε στα πλαίσια εκπόνησης της εργασίας του μαθήματος Προγραμματισμός ΙΙ ,του τμήματος Διοικητικής Επιστήμης και Τεχνολογίας που ανήκει στο Οικονομικό Πανεπιστήμιο Αθηνών.
 Την επιμέλεια αυτής επωμίστηκε η ομάδα "Κεράσια" και κάτωθι παρουσιάζονται τα μέλη της αναλυτικά:
 * Κούρος Άγγελος (8220070)
 * Ζωντανού Βασιλική (8230039)
@@ -215,7 +214,7 @@ If you're still encountering issues, let me know!
 * Λίβα Ευθυμία (8230078)
 * Μουραφέτης Δημήτρης (8230100)
 * Πανούση Αικατερίνη (8230113)
+* Ρηγοπούλου Κωνσταντίνα-Δήμητρα (8230129)
 
 ## License
 
-* Ρηγοπούλου Κωνσταντίνα-Δήμητρα (8230129)
