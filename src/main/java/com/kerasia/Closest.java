@@ -10,7 +10,7 @@ public class Closest {
 
     private static final String API_KEY = "AIzaSyCkgsJjyrx_oXY2WyjCagwEDCmXMO0f1Qo";
 
-    // Υπολογισμός απόστασης με βάση τις συντεταγμένες
+    /** distance calculating method using coordinates*/
     public double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
         final double R = 6371; // Ακτίνα Γης σε χλμ
         double dLat = Math.toRadians(lat2 - lat1);
@@ -22,7 +22,7 @@ public class Closest {
         return R * c; // Απόσταση σε χλμ
     }
 
-    // Λήψη συντεταγμένων από τη διεύθυνση μέσω API Google
+    /** getting the coordinates from Google API*/
     public double[] getCoordinates(String address) {
         try {
             String url = "https://maps.googleapis.com/maps/api/geocode/json?address="
@@ -55,27 +55,23 @@ public class Closest {
         return new double[]{0.0, 0.0};
     }
 
-    // Εύρεση κοντινότερου νοσοκομείου
+    
     public String findClosestHospital(User user, hospitalfind finder) {
-        // Παίρνουμε τη διεύθυνση από το User
+
         String userAddress = user.getAddress();
 
-        // Παίρνουμε την ημέρα της εβδομάδας (dayOfWeek) από τον User
         String dayOfWeek = user.getDayOfWeek();
 
-        // Παίρνουμε τη βάρδια (time) από τον User
         String time = user.getTime();
 
-        // Ορίζουμε “χειροκίνητα” (hard-coded) το τμήμα στην "Παθολογική"
+        /**setting default department "pathologiki"*/
         String department = "Παθολογική";
 
-        // Λήψη συντεταγμένων χρήστη
         double[] userCoordinates = getCoordinates(userAddress);
         if (userCoordinates[0] == 0.0 || userCoordinates[1] == 0.0) {
             return "Αποτυχία λήψης συντεταγμένων για τη διεύθυνση χρήστη.";
         }
 
-        // Βρες τα νοσοκομεία με βάση το τμήμα, την ημέρα και τη βάρδια
         List<String[]> hospitals = finder.findHospitals(department, dayOfWeek, time);
         if (hospitals.isEmpty()) {
             return "Δε βρέθηκαν νοσοκομεία με το τμήμα " + department + ".";
@@ -84,7 +80,6 @@ public class Closest {
         String closestHospital = null;
         double closestDistance = Double.MAX_VALUE;
 
-        // Υπολογισμός απόστασης για κάθε νοσοκομείο
         for (String[] hospital : hospitals) {
             String hospitalName = hospital[0];
             String hospitalAddress = hospital[1];
