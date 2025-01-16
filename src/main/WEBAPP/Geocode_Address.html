@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geocode Address</title>
+</head>
+<body>
+    <h1>Find Coordinates from Address</h1>
+    <input type="text" id="address" placeholder="Enter address">
+    <button onclick="getCoordinates()">Get Coordinates</button>
+    <p id="coordinates"></p>
+
+    <script>
+        async function getCoordinates() {
+            const address = document.getElementById("address").value;
+            const apiKey = 'YOUR_API_KEY'; 
+            const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.status === 'OK') {
+                const location = data.results[0].geometry.location;
+                const lat = location.lat;
+                const lng = location.lng;
+
+                handleCoordinates(lat, lng);
+            } else {
+                document.getElementById("coordinates").innerText = 'Address not found!';
+            }
+        }
+
+        // Συνάρτηση για την επεξεργασία των συντεταγμένων ή χρήση τους σε άλλες κλάσεις
+        function handleCoordinates(lat, lng) {
+            console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+
+            document.getElementById("coordinates").innerText = `Latitude: ${lat}, Longitude: ${lng}`;
+
+            useCoordinatesInOtherClass(lat, lng);
+        }
+
+        function useCoordinatesInOtherClass(lat, lng) {
+            console.log("Coordinates passed to another function or class:", lat, lng);
+        }
+    </script>
+</body>
+</html>
