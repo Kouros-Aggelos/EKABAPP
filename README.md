@@ -21,8 +21,8 @@
   chcp 65001
 #### Συνδεθείτε στην ενσωματωμένη βάση μέσω της εξής διαδικασίας:
 ##### (έχοντας μπει στο path του project μας, στο root directory)
-   cd src/main/resources
-   .\sqllite3 hospital_system.db
+   cd src/main/resources,
+   .\sqlite3 hospital_system.db,
    cd .. (x3)
 
 #### Μεταγλωττίστε όλα τα αρχεία Java μαζί με τις βιβλιοθήκες με την εντολή:
