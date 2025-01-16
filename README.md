@@ -20,14 +20,13 @@
 
   chcp 65001
 ### Συνδεθείτε στην ενσωματωμένη βάση μέσω της εξής διαδικασίας:
+#### (έχοντας μπει στο path του project μας)
    cd src/main/resources
    .\slqlite3 hospital_system.db
    cd .. (x3)
 
 ### Μεταγλωττίστε όλα τα αρχεία Java μαζί με τις βιβλιοθήκες με την εντολή:
-
-javac -cp .;json-20250107.jar;sqlite-jdbc-3.47.2.0.jar *.java
-ή mvn clean install
+mvn clean install
 
 ### Εκτελέστε την εφαρμογή με την εντολή:
 
