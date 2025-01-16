@@ -217,9 +217,8 @@ If you're still encountering issues, let me know!
 * Ρηγοπούλου Κωνσταντίνα-Δήμητρα (8230129)
 
 ## Άδεια Χρήσης
-Αυτό το έργο διαθέτει άδεια χρήσης υπό την άδεια ΜΙΤ. Δείτε το αρχείο License για περισσότερες πληροφορίες.
-MIT License
+ΑΑυτό το έργο διανέμεται υπό την άδεια [MIT License](https://opensource.org/licenses/MIT).
+Δείτε το αρχείο License για περισσότερες πληροφορίες.
 Copyright (c) 2025 [EKABAPP]
-Αυτό το έργο διανέμεται υπό την άδεια [MIT License](https://opensource.org/licenses/MIT).
 
 
