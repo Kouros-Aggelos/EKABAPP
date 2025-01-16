@@ -11,13 +11,13 @@ import java.util.InputMismatchException;
 
 public class User {
 
-    // Ιδιότητες που θα αποθηκεύουν τα δεδομένα του χρήστη
+
     private String fullName;
     private String address;
     private int age;
     private int severityLevel;
-    private String dayOfWeek; // Αποθηκεύει τη μέρα της εβδομάδας
-    private String time; // Αποθηκεύει την ώρα
+    private String dayOfWeek; 
+    private String time; 
     private Scanner scanner; // Scanner που μεταβιβάζεται μέσω του κατασκευαστή
 
     // Κατασκευαστής με Scanner
@@ -72,7 +72,6 @@ public class User {
         return a;
     }
 
-    // Μέθοδος που αποθηκεύει τη μέρα της εβδομάδας και την ώρα
     public void saveDayAndTime() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         // Αποθηκεύουμε τη μέρα της εβδομάδας στα ελληνικά
@@ -82,7 +81,6 @@ public class User {
         time = currentDateTime.format(timeFormatter);
     }
 
-    // Μέθοδος για εμφάνιση των δεδομένων του χρήστη
     public void displayUserInfo() {
         System.out.println("\n--- Πληροφορίες Ασθενούς ---");
         System.out.println("Ονοματεπώνυμο: " + fullName);
