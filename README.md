@@ -1,4 +1,4 @@
-# EKABAPP Optimization System
+# EKABAPP your Emergency Partner
 ## Περιγραφή Εφαρμογής
 
 Το **EKAB Optimization** System είναι μια εφαρμογή που στοχεύει στη βελτιστοποίηση της διαχείρισης περιστατικών έκτακτης ανάγκης. Παρέχει την δυνατότητα να βρεθεί το κοντινότερο και καταλληλότερο νοσοκομείο, βελτιστοποιώντας την διαδρομή του ασθενοφόρου, παρουσιάζοντας ταυτόχρονα την διαδρομή σε πραγματικό γραφικό περιβάλλον🍒
@@ -134,7 +134,17 @@ ESIcode: Ο αλγόριθμος ESI (Emergency Severity Index) αξιολογε
 (μείζονος - ήσσονος σοβαρότητας).
 Pythagorean distance formula: Αλγόριθμος - μαθηματικός φορμαλισμός για τον υπολογισμό κοντινότερης απόστασης μεταξύ δύο σημείων.
 
-### Δομές Δεδομένων!!!!!!!!!
+### Κλάσεις  
+   Closest: 
+   Frommap:
+   MapLauncher:
+   hospitalfind: 
+   SeverityIndex: 
+   Suitable: 
+   User: 
+   Main: 
+   ### Λίστες
+     public Λίστα Hospital
 
 (## Προαπαιτούμενα
 
@@ -220,7 +230,7 @@ If you're still encountering issues, let me know!
 * Ρηγοπούλου Κωνσταντίνα-Δήμητρα (8230129)
 
 ## Άδεια Χρήσης
-ΑΑυτό το έργο διανέμεται υπό την άδεια [MIT License](https://opensource.org/licenses/MIT).
+Αυτό το έργο διανέμεται υπό την άδεια [MIT License](https://opensource.org/licenses/MIT).
 Δείτε το αρχείο License για περισσότερες πληροφορίες.
 Copyright (c) 2025 [EKABAPP]
 
