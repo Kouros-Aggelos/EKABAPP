@@ -144,8 +144,7 @@ Pythagorean distance formula: Αλγόριθμος - μαθηματικός φο
    User
    Main
    ### Λίστες
-     public Λίστα Hospital
-
+  Δημόσια Λίστα Hospital
 
 ## API Documentation
 Αρχιτεκτονική API:
