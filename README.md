@@ -231,6 +231,7 @@ If you're still encountering issues, let me know!
 
 ## Άδεια Χρήσης
 Αυτό το έργο διανέμεται υπό την άδεια [MIT License](https://opensource.org/licenses/MIT).
+Εκτός αν αναφέρεται κάτι διαφορετικό, όλο το πρωτότυπο υλικό του repository παρέχεται σύμφωνα με τους όρους της άδειας «Creative Commons Attribution-Share Alike 3.0 Greece License».
 Δείτε το αρχείο License για περισσότερες πληροφορίες.
 Copyright (c) 2025 [EKABAPP]
 
