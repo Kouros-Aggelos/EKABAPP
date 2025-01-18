@@ -17,19 +17,13 @@
 ##### (μέσω cmd)
 
 #### Αλλάξτε την κωδικοποίηση της κονσόλας σε UTF-8 με την εντολή:
-
-  chcp 65001
-#### Συνδεθείτε στην ενσωματωμένη βάση μέσω της εξής διαδικασίας:
-##### (έχοντας μπει στο path του project μας, στο root directory)
-   cd src/main/resources,
-   .\sqlite3 hospital_system.db,
-   cd .. (x3)
-
+chcp 65001
+  
 #### Μεταγλωττίστε όλα τα αρχεία Java μαζί με τις βιβλιοθήκες με την εντολή:
-mvn clean install
+mvn clean package
 
 #### Εκτελέστε την εφαρμογή με την εντολή:
-
+java -jar target/EKABAPP-1.0-SNAPSHOT.jar
 
 
 
