@@ -135,26 +135,16 @@ ESIcode: Ο αλγόριθμος ESI (Emergency Severity Index) αξιολογε
 Pythagorean distance formula: Αλγόριθμος - μαθηματικός φορμαλισμός για τον υπολογισμό κοντινότερης απόστασης μεταξύ δύο σημείων.
 
 ### Κλάσεις  
-   Closest: 
-   Frommap:
-   MapLauncher:
-   hospitalfind: 
-   SeverityIndex: 
-   Suitable: 
-   User: 
-   Main: 
+   Closest
+   Frommap
+   MapLauncher
+   hospitalfind
+   SeverityIndex
+   Suitable
+   User
+   Main
    ### Λίστες
      public Λίστα Hospital
-
-(## Προαπαιτούμενα
-
-Κατεβασμένα αρχεία JAR:
-
-json-20250107.jar
-
-sqlite-jdbc-3.47.2.0.jar
-
-SQLite3 tools.)
 
 
 ## API Documentation
