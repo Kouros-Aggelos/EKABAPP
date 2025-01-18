@@ -42,7 +42,7 @@
         // Συνάρτηση για λήψη κοντινότερου νοσοκομείου
         async function getClosestHospital(userLocation) {
             try {
-                // Αντικαταστήστε με την πραγματική διεύθυνση του χρήστη
+                
                 const response = await fetch('http://localhost:3000/get-closest-hospital', {
                     method: 'POST',
                     headers: {
@@ -54,16 +54,16 @@
                 const data = await response.json();
 
                 if (data.status === "success") {
-                    const hospital = data.data; // Παράδειγμα: { name: 'Νοσοκομείο', lat: 37.9714, lng: 23.7255 }
+                    const hospital = data.data; 
 
-                    // Προσθήκη marker για το νοσοκομείο
+                   
                     hospitalMarker = new google.maps.Marker({
                         position: { lat: hospital.lat, lng: hospital.lng },
                         map: map,
                         title: hospital.name
                     });
 
-                    // Δημιουργία διαδρομής
+                   
                     const directionsService = new google.maps.DirectionsService();
                     const directionsRenderer = new google.maps.DirectionsRenderer();
                     directionsRenderer.setMap(map);
