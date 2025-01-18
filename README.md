@@ -189,8 +189,42 @@ http://localhost:8080/*
 
 
 ### Ρωτήσαμε:
-
+-why everytime i run the program there is a hospital_database.db file (which is empty) created in the route folder of the project?  
 ### Το ChatGPT είπε:
+-Answer: The creation of the hospital_database.db file in the root folder of the project indicates that the program is trying to create and connect to a new SQLite database file. This behavior happens because:
+The SQLite URL used in your program is:
+java String url = "jdbc:sqlite:hospital_system.db";
+If the file hospital_system.db does not exist in the specified location (in this case, the working directory), SQLite automatically creates a new, empty database file with that name. Your program's working directory (the default location for relative paths) is the root folder of the Maven project when running the program.
+
+#### Why Is the File Empty?
+The file is empty because:
+Your program connects to this new, empty database file instead of the intended hospital_system.db file.
+The actual hospital_system.db file might be in a different folder (e.g., src/main/resources), and the program does not copy it to the working directory or access it correctly.
+#### Solutions to Prevent This Behavior
+##### 1. Use an Absolute Path
+Ensure the program accesses the correct database file by providing an absolute path to the hospital_system.db file. For example:
+String url = "jdbc:sqlite:/absolute/path/to/hospital_system.db";
+Replace /absolute/path/to with the actual path to your hospital_system.db file.
+
+##### 2. Load the Database from the resources Folder
+If the database file is in the src/main/resources folder, you can load it using the ClassLoader:
+String dbPath = getClass().getClassLoader().getResource("hospital_system.db").getPath();
+String url = "jdbc:sqlite:" + dbPath;
+##### 3. Check If the File Exists Before Connecting
+Before connecting to the database, check if the file exists. If it doesn’t, copy it from resources or handle the error.
+
+Example:
+File dbFile = new File("hospital_system.db");
+if (!dbFile.exists()) {
+    System.out.println("Database file not found! Make sure it exists.");
+    System.exit(1); // Exit the program if the file is missing
+}
+
+String url = "jdbc:sqlite:" + dbFile.getAbsolutePath();
+##### 4. Avoid Using Relative Paths
+Relative paths can lead to confusion when the working directory changes. Always use absolute paths or retrieve the file from the classpath.
+
+
 
 ### Ρωτήσαμε:
 The severityindex code that i have written receives answers in greek like ναι/οχι but scanner doesnt recognize greek so when i press nai/oxi it goes straightly to the invalidinput exception.Why?
