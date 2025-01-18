@@ -1,4 +1,10 @@
 package com.kerasia;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -60,12 +66,30 @@ public class hospitalfind {
     }
 
     private String calculateShift(String time) {
+
         if (time.compareTo("08:00") >= 0 && time.compareTo("14:30") < 0) {
             return "Prwini";
         } else {
             return "Bradinh";
         }
     }
+
+    public String prepareDatabase() throws IOException {
+    
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("hospital_system.db");
+
+        if (inputStream == null) {
+            throw new FileNotFoundException("Το αρχείο hospital_system.db δεν βρέθηκε στα resources.");
+        }
+
+    
+        Path tempFile = Files.createTempFile("hospital_system", ".db");
+        tempFile.toFile().deleteOnExit(); 
+
+        Files.copy(inputStream, tempFile, StandardCopyOption.REPLACE_EXISTING);
+
+        return tempFile.toAbsolutePath().toString();
+}
 
     public List<String[]> findHospitals(String department, String dayOfWeek, String time) {
         List<String[]> hospitals = new ArrayList<>();
@@ -74,7 +98,8 @@ public class hospitalfind {
             String dayGreeklish = convertDayToGreeklish(dayOfWeek);
             String shift = calculateShift(time);
 
-            String url = "jdbc:sqlite:hospital_system.db";
+            String dbPath = prepareDatabase();
+            String url = "jdbc:sqlite:" + dbPath;
             Connection connection = DriverManager.getConnection(url);
 
             String query = "SELECT h.hospital_name, h.hospital_address, h.area " +
@@ -83,7 +108,7 @@ public class hospitalfind {
                            "JOIN schedule s ON hs.schedule_id = s.schedule_id " +
                            "WHERE s.department = ? " +
                            "AND s.day = ? " +
-                           "AND s.shift = ?";
+                           "AND s.shift IN (?, '24h')";
 
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, departmentGreeklish);
