@@ -7,8 +7,7 @@ import java.io.IOException;
 public class MapLauncher {
     public void launchMap() {
         try {
-            // Δημιουργία διαδρομής στο αρχείο HTML
-            File htmlFile = new File("src/main/WEBAPP/ekab.html"); // Προσαρμόστε τη διαδρομή στο αρχείο σας
+            File htmlFile = new File("src/main/WEBAPP/FrontendMap.html"); 
 
             // Άνοιγμα του αρχείου HTML στον προεπιλεγμένο browser
             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
